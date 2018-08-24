@@ -29,6 +29,9 @@ config.port = 3000;
 // Number of rooms
 config.numRooms = 3;
 
+// Number of fruit
+config.numFood = 10;
+
 // Size of board
 config.boardSize = 50;
 

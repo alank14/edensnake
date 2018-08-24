@@ -54,17 +54,16 @@ while($row = mysqli_fetch_array($result)){
 }
 
 // populate $userArray
-$sql = "SELECT name_title, first_name, last_name, username, capture_style, hint_level
-	FROM users
-	WHERE id = $currentUserID;";
+$sql = "SELECT id AS user_id, name_title, first_name, last_name, username, capture_style, hint_level
+	FROM users;";
 $result = mysqli_query($conn,$sql) or die(mysqli_error($conn));
 while($row = mysqli_fetch_array($result)){
-	$userArray["name_title"] = $row['name_title'];
-	$userArray["first_name"] = $row['first_name'];
-	$userArray["last_name"] = $row['last_name'];
-	$userArray["username"] = $row['username'];
-	$userArray["capture_style"] = $row['capture_style'];
-	$userArray["hint_level"] = $row['hint_level'];
+	$userArray[$row['user_id']]["name_title"] = $row['name_title'];
+	$userArray[$row['user_id']]["first_name"] = $row['first_name'];
+	$userArray[$row['user_id']]["last_name"] = $row['last_name'];
+	$userArray[$row['user_id']]["username"] = $row['username'];
+	$userArray[$row['user_id']]["capture_style"] = $row['capture_style'];
+	$userArray[$row['user_id']]["hint_level"] = $row['hint_level'];
 }
 
 // if next_day is blank, then fill it in randomly

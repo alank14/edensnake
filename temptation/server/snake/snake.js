@@ -40,7 +40,8 @@ class Snake {
         this.directions = this._createBoard();
 
         // Spawn foods
-        for (var i = 0; i < 5; i++) this._spawnFood();
+		// todo: make the initial food total be read from configuration file
+        for (var i = 0; i < 10; i++) this._spawnFood();
 
         // Start updating
         this._startGameTimer();

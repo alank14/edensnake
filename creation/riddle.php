@@ -36,7 +36,7 @@ todo
 		echo '<img src="resources/edensnake-logo.png" width="100"/>' . "\n";
 	echo '</td>';
 	echo '<td style="text-align:right;">';
-		echo "<p>" . $userArray["first_name"] . " " . $userArray["last_name"];
+		echo "<p>" . $userArray[$currentUserID]["first_name"] . " " . $userArray[$currentUserID]["last_name"];
 		echo "<img src='resources/logout.png' width='80'/>\n";
 		echo "</p>\n";
 		echo '</td>';
