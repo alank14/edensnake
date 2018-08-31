@@ -23,7 +23,6 @@ todo
 	echo '<link rel="stylesheet" href="edensnake.css">' . "\n";
 	echo '<link rel="stylesheet" href="css/normalize.css">' . "\n";
 	echo '<link rel="stylesheet" href="css/skeleton.css">' . "\n";
-	echo '<script src="resources/creation.js"></script>' . "\n";
 	echo '<link rel="icon" type="image/png" href="images/favicon.png">' . "\n";
 	// echo '<script src="edensnake.js"></script>' . "\n";
 	echo '</head><body>' . "\n";
@@ -110,6 +109,7 @@ todo
 	<?php
 	
 	
+	echo '<script src="resources/creation.js"></script>' . "\n";
 	
 	
 
