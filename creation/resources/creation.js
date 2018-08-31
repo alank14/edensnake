@@ -1,4 +1,4 @@
-	<script type="module">
+//	<script type="module">
 	    import QrScanner from "./qr-scanner.min.js";
 	    const video = document.getElementById('qr-video');
 	    const debugCheckbox = document.getElementById('debug-checkbox');
@@ -67,4 +67,4 @@
 	            debugCanvasContext.putImageData(imageData, 0, 0);
 	        }
 	    }
-	</script>
+//	</script>
