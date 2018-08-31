@@ -84,7 +84,16 @@ todo
 			echo ' <span id="wordsForBTag"></span>';
 		echo '</div>';
 	}
+	?>
 
+	<!-- webcam -->
+	<div class="cam">
+<!--	    <xvideo style="width:320px;height=180;" muted autoplay playsinline xid="qr-video"></xvideo> -->
+	    <video style="width:180px;height=180px;" muted autoplay playsinline id="qr-video"></video>
+	    <canvas id="debug-canvas"></canvas>
+	</div>
+
+	<?php
 	// puzzle-piece table
 	echo '<table id="puzzle_pieces" xcellspacing="0" border="border">' . "\n";
 		echo "<tr>\n";
@@ -113,12 +122,10 @@ todo
 	
 	?>
 	
-	<h3>Scan from WebCam:</h3>
-	<div class="cam">
-<!--	    <xvideo style="width:320px;height=180;" muted autoplay playsinline xid="qr-video"></xvideo> -->
-	    <video style="width:180px;height=180px;" muted autoplay playsinline id="qr-video"></video>
-	    <canvas id="debug-canvas"></canvas>
-	</div>
+
+
+
+
 	<div>
 	    <input type="checkbox" id="debug-checkbox">
 	    <span>Show debug image</span>
