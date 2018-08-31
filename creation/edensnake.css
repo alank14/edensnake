@@ -1,19 +1,3 @@
-xinput[type=text], select, textarea{
-  width: 100%;
-  padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-  resize: vertical;
-}
-
-input.btag {
-      width: 60px; /* When specifying this, you can use both px and % */
-	  height: 40px;
-	  border: 4px solid #999;
-	  font-size: 16px;
-}
-
 input.dayRadio {
       width: 50px;
 }
@@ -35,10 +19,6 @@ input.dayRadio {
 	text-align: center;
 }
 
-.btag {
-	margin-left: 30px;
-}
-
 canvas {
     display: none;
 }
@@ -50,6 +30,8 @@ div.cam {
     margin-bottom: 16px;
 }
 
+
+
 p.instructions {
 	font-size: 12px;
 	margin-bottom: 0px;
@@ -59,18 +41,40 @@ p.instructions {
 	color:darkgreen;
 	margin-left: 10px;
 	margin-bottom: 0px;
-	font-size: 18px;
+	font-size: 16px;
+}
+
+.btag {
+	margin-left: 10px;
+}
+
+input.btag {
+      width: 40px; /* When specifying this, you can use both px and % */
+	  border: 3px solid #999;
+	  font-size: 16px;
+}
+
+#myHINT {
+	display: none;
+	width: 200px;
+    line-height: 20px;
+    border-radius: 4px;
+  	font-family: 'M PLUS Rounded 1c', sans-serif;
 }
 
 #clue_hints_div {
 	margin-left: 10px;
+	font-size: 12px;
 }
 
 #clue_answer_div {
 	margin-left: 10px;
+	font-size: 12px;
 }
 
-
+.hint_hebrew {
+	text-align: right;
+}
 
 .pieceHeader {
 	background: lightgreen;
@@ -113,7 +117,7 @@ p.instructions {
   font-size: 14px; 
   line-height: 20px;
   border-radius: 4px;
-font-family: 'M PLUS Rounded 1c', sans-serif;
+	font-family: 'M PLUS Rounded 1c', sans-serif;
 }
 
 /* Style the logo link (notice that we set the same value of line-height and font-size to prevent the header to increase when the font gets bigger */

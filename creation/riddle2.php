@@ -68,14 +68,30 @@ echo '	</div>';
 			echo "\t\t" . 'document.getElementById("wordsForBTag").innerHTML = $answerWords[$theValue];' . "\n";
 			echo "\t}\n";
 		echo "}\n";
+		
+		// Hint Display Javascript
+		
+		echo 'function showHideHint() {' . "\n";
+		    echo 'var x = document.getElementById("myHINT");' . "\n";
+		    echo 'if ((x.style.display == "none") || (x.style.display == "")) {' . "\n";
+		        echo 'x.style.display = "block";' . "\n";
+				echo 'document.getElementById("showHideHintButton").value = "hide hint";' . "\n";
+		    echo '} else {' . "\n";
+		        echo 'x.style.display = "none";' . "\n";
+				echo 'document.getElementById("showHideHintButton").value = "show hint";' . "\n";
+		    echo '}' . "\n";
+		echo '}' . "\n";
+		
+		
+		
 	echo "</script>\n";
 	
 	if ($answersCorrect != 7) {
 		// current riddle
-		echo '<p class="instructions">Find the B-Tag in YICC\'s Rotunda that solves this riddle:</p>';
+		echo '<p class="instructions">Find the B-Tag that solves this riddle:</p>';
 		echo '<div id="clue_div">' . $riddleArray[$rday]["riddle"] . "</div>\n";
 	
-		echo '<p class="instructions">Scan the QR-Code, or just type in the three digits:</p>';
+		echo '<p class="instructions">Scan the QR-Code, or type in the three digits:</p>';
 		echo "<div class='btag'>B-Tag Number: ";
 			echo '<input onkeyup=' . "parseMe(document.getElementById(\"cam-qr-result\").value);" . ' id="cam-qr-result" name="ranswer" type="tel" size="4" minlength="3" maxlength="3" class="btag"/>' . "\n";
 			echo ' <span id="wordsForBTag"></span>';
@@ -91,7 +107,30 @@ echo '	</div>';
 	    <canvas id="debug-canvas"></canvas>
 	</div>
 
+
+<input id="showHideHintButton" type="button" onclick="showHideHint()" value="Show Hint"/>
+
+
 	<?php
+	echo '<div id="myHINT">' . "\n";
+
+	if ($answersCorrect != 7) {
+		// hints for current clue
+			echo '<div id="clue_hints_div">' . "\n";
+			echo "<p class='hint_english'><i>" . '"' . $riddleArray[$rday]["quote_english"] . '"' . "</i></p>";
+			echo "<p class='hint_hebrew'>" . $riddleArray[$rday]["quote_hebrew"] . "</p>";
+			echo '</div>' . "\n";
+
+		// answer (for testing purposes)
+			echo '<div id="clue_answer_div">' . "\n";
+			echo '<p>B-Tag = ' . $riddleArray[$rday]["riddle_answer_key"] . ' and Day = ' . $riddleArray[$rday]["day"];
+			echo ' (' . $riddleArray[$rday]["riddle_answer"] . ')</p>';
+			// echo "<img src='sample-photos/sample-$rday.png' height='200' xalign='left'/>\n";
+			echo '</div>' . "\n";
+	}
+	echo '</div>' . "\n";
+
+
 	
 	echo '</div>' . "\n"; // end cbody-left
 	
@@ -140,7 +179,7 @@ echo '	</div>';
 
 
 
-
+<hr/>
 	<div>
 	    <input type="checkbox" id="debug-checkbox">
 	    <span>Show debug image</span>
@@ -229,22 +268,6 @@ echo '	</div>';
 	
 	
 
-	if ($answersCorrect != 7) {
-		// hints for current clue
-		echo '<h3 style="color:darkgreen;">Hint:</h3>' . "\n";
-			echo '<div id="clue_hints_div">' . "\n";
-			echo "<h4><i>" . '"' . $riddleArray[$rday]["quote_english"] . '"' . "</i></h4>";
-			echo "<h4>" . $riddleArray[$rday]["quote_hebrew"] . "</h4>";
-			echo '</div>' . "\n";
-
-		// answer (for testing purposes)
-		echo '<h3 style="color:darkgreen;">Answer:</h3>' . "\n";
-			echo '<div id="clue_answer_div">' . "\n";
-			echo '<h4>B-Tag = ' . $riddleArray[$rday]["riddle_answer_key"] . ' and Day = ' . $riddleArray[$rday]["day"];
-			echo ' (' . $riddleArray[$rday]["riddle_answer"] . ')</h4>';
-			echo "<img src='sample-photos/sample-$rday.png' height='200' xalign='left'/>\n";
-			echo '</div>' . "\n";
-	}
 	// reset link (for debug purposes)
 	echo '<h3><a href="./riddle2.php?reset=true">reset game</a></h3>';
 	
