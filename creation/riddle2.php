@@ -120,14 +120,8 @@ echo '	</div>';
 			echo "<p class='hint_english'><i>" . '"' . $riddleArray[$rday]["quote_english"] . '"' . "</i></p>";
 			echo "<p class='hint_hebrew'>" . $riddleArray[$rday]["quote_hebrew"] . "</p>";
 			echo '</div>' . "\n";
+		}
 
-		// answer (for testing purposes)
-			echo '<div id="clue_answer_div">' . "\n";
-			echo '<p>B-Tag = ' . $riddleArray[$rday]["riddle_answer_key"] . ' and Day = ' . $riddleArray[$rday]["day"];
-			echo ' (' . $riddleArray[$rday]["riddle_answer"] . ')</p>';
-			// echo "<img src='sample-photos/sample-$rday.png' height='200' xalign='left'/>\n";
-			echo '</div>' . "\n";
-	}
 	echo '</div>' . "\n";
 
 
@@ -167,19 +161,23 @@ echo '	</div>';
 	
 
 
-	echo '<br clear="all"/>';
 
 
 
-	echo '<div class="container">' . "\n";
 
-	
-	?>
-	
+echo '<br clear="all"/><br/><br/>';
 
+echo '<hr/>';
 
-
-<hr/>
+	if ($answersCorrect != 7) {
+		// answer (for testing purposes)
+			echo '<div id="clue_answer_div">' . "\n";
+			echo '<p>B-Tag = ' . $riddleArray[$rday]["riddle_answer_key"] . ' and Day = ' . $riddleArray[$rday]["day"];
+			echo ' (' . $riddleArray[$rday]["riddle_answer"] . ')</p>';
+			// echo "<img src='sample-photos/sample-$rday.png' height='200' xalign='left'/>\n";
+			echo '</div>' . "\n";
+	}
+?>
 	<div>
 	    <input type="checkbox" id="debug-checkbox">
 	    <span>Show debug image</span>
@@ -274,7 +272,7 @@ echo '	</div>';
 	
 	
 	
-	echo '</div></body></html>' . "\n";
+	echo '</body></html>' . "\n";
 	
 /*
 	echo "<h4>" . $answersCorrect . " clues solved and " . (7 - $answersCorrect) . " unanswered" . "</h4>\n";
