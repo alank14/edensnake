@@ -112,7 +112,7 @@ echo '	</div>';
 
 
 	<?php
-	echo '<div id="myHINT">' . "\n";
+	echo '<div id="myHINT" style="display:none;">' . "\n";
 
 	if ($answersCorrect != 7) {
 		// hints for current clue
