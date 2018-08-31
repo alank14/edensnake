@@ -73,9 +73,7 @@ echo '	</div>';
 	if ($answersCorrect != 7) {
 		// current riddle
 		echo '<p class="instructions">Find the B-Tag in YICC\'s Rotunda that solves this riddle:</p>';
-		echo '<div id="clue_div">' . "\n";
-		echo "<h3 class='clue_hint'>" . $riddleArray[$rday]["riddle"] . "</h3>";
-		echo '</div>' . "\n";
+		echo '<div id="clue_div">' . $riddleArray[$rday]["riddle"] . "</div>\n";
 	
 		echo '<p class="instructions">Scan the QR-Code, or just type in the three digits:</p>';
 		echo "<div class='btag'>B-Tag Number: ";

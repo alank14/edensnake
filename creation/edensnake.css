@@ -8,22 +8,14 @@ xinput[type=text], select, textarea{
 }
 
 input.btag {
-      width: 100px; /* When specifying this, you can use both px and % */
+      width: 60px; /* When specifying this, you can use both px and % */
 	  height: 40px;
 	  border: 4px solid #999;
-	  font-size: 24px;
+	  font-size: 16px;
 }
 
 input.dayRadio {
       width: 50px;
-}
-
-#clue_hints_div {
-	margin-left: 20px;
-}
-
-#clue_answer_div {
-	margin-left: 20px;
 }
 
 #puzzle_pieces {
@@ -41,11 +33,6 @@ input.dayRadio {
     max-height: 90px;
 	padding: 0px;
 	text-align: center;
-}
-
-#clue_div {
-	color:darkgreen;
-	margin-left: 30px;
 }
 
 .btag {
@@ -68,8 +55,19 @@ p.instructions {
 	margin-bottom: 0px;
 }
 
-.clue_hint {
+#clue_div {
+	color:darkgreen;
+	margin-left: 10px;
 	margin-bottom: 0px;
+	font-size: 18px;
+}
+
+#clue_hints_div {
+	margin-left: 10px;
+}
+
+#clue_answer_div {
+	margin-left: 10px;
 }
 
 
@@ -212,7 +210,7 @@ font-family: 'M PLUS Rounded 1c', sans-serif;
 }
 
 /* Add media queries for responsiveness - when the screen is 500px wide or less, stack the links on top of each other */ 
-@media screen and (max-width: 200px) {
+@media screen and (max-width: 150px) {
     .cbody a {
       float: none;
       display: block;
