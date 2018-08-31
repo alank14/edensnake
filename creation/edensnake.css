@@ -48,6 +48,11 @@ p.instructions {
 	margin-left: 10px;
 }
 
+#wordsForBTag {
+	text-align: right;
+	font-size: 12px;
+}
+
 input.btag {
       width: 40px; /* When specifying this, you can use both px and % */
 	  border: 3px solid #999;

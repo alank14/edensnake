@@ -61,7 +61,7 @@ echo '	</div>';
 		// echo "\n\t\$enteredText = document.getElementById('firstNameField').value;\n";
 		echo "if (typeof \$answerWords[\$theValue] === 'undefined') {\n";
 			// reset the span to BLANK!
-			echo "\t\t" . 'document.getElementById("wordsForBTag").innerHTML = "";' . "\n";
+			echo "\t\t" . 'document.getElementById("wordsForBTag").innerHTML = "&nbsp;";' . "\n";
 			echo "}\n";
 			echo "else {\n";
 			// set that span to the helpful-feedback words
@@ -94,7 +94,7 @@ echo '	</div>';
 		echo '<p class="instructions">Scan the QR-Code, or type in the three digits:</p>';
 		echo "<div class='btag'>B-Tag Number: ";
 			echo '<input onkeyup=' . "parseMe(document.getElementById(\"cam-qr-result\").value);" . ' id="cam-qr-result" name="ranswer" type="tel" size="4" minlength="3" maxlength="3" class="btag"/>' . "\n";
-			echo ' <span id="wordsForBTag"></span>';
+			echo ' <div id="wordsForBTag">&nbsp;</div>';
 		echo '</div>';
 		echo '<p class="instructions">Then click the Day of Creation at right!</p>';
 	}
