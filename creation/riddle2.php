@@ -21,8 +21,6 @@ todo
 	echo '<meta name="viewport" content="width=device-width, initial-scale=1">' . "\n";
 	echo '<link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">' . "\n";
 	echo '<link rel="stylesheet" href="edensnake.css">' . "\n";
-	echo '<link rel="stylesheet" href="css/normalize.css">' . "\n";
-	echo '<link rel="stylesheet" href="css/skeleton.css">' . "\n";
 	echo '<link rel="icon" type="image/png" href="images/favicon.png">' . "\n";
 	echo '</head><body>' . "\n";
 
@@ -37,24 +35,11 @@ echo '	  </div>';
 echo '	</div>';
 
 
-	echo '<div class="container">' . "\n";
-	
-/*
-	// banner
-	echo '<table id="banner" width="100%"><tr bgcolor="lightyellow" valign="top">';
-	echo '<td>';
-		// echo '<img src="resources/BK-logo-final.png" width="40"/>' . "\n";
-		echo '<img src="resources/edensnake-logo.png" width="100"/>' . "\n";
-	echo '</td>';
-	echo '<td style="text-align:right;">';
-		echo "<p>";
-		echo $userArray[$currentUserID]["first_name"] . " " . $userArray[$currentUserID]["last_name"];
-		echo "<img src='resources/logout.png' width='80'/>\n";
-		echo "</p>\n";
-		echo '</td>';
-	echo '</tr></table>';
-*/
-	
+	echo '<div class="cbody">' . "\n";
+
+	echo '<div class="cbody-left">' . "\n";
+
+
 	// feedback message, if any
 	if ($feedbackMessage != '') {
 		echo '<h2 class="feedback">' . $feedbackMessage . '</h2>' . "\n";
@@ -97,7 +82,7 @@ echo '	</div>';
 			echo '<input onkeyup=' . "parseMe(document.getElementById(\"cam-qr-result\").value);" . ' id="cam-qr-result" name="ranswer" type="tel" size="4" minlength="3" maxlength="3" class="btag"/>' . "\n";
 			echo ' <span id="wordsForBTag"></span>';
 		echo '</div>';
-		echo '<p class="instructions">Then click the Day of Creation below!</p>';
+		echo '<p class="instructions">Then click the Day of Creation at right!</p>';
 	}
 	?>
 
@@ -109,31 +94,48 @@ echo '	</div>';
 	</div>
 
 	<?php
-	// puzzle-piece table
-	echo '<table id="puzzle_pieces" xcellspacing="0" border="border">' . "\n";
-		echo "<tr>\n";
-		for ($i=1; $i<=7; $i++) {
-			echo "<th>Day $i</th>\n";
-		}
-		echo "</tr>\n";
+	
+	echo '</div>' . "\n"; // end cbody-left
+	
 		
-		echo "<tr>\n";
-		for ($i=1; $i<=7; $i++) {
-			echo "<td>";
-			if ($userRiddleArray[$currentUserID][$i] == $riddleArray[$i]["day"]) {
-				echo "<img src='snake-pieces/snake-$i.png' width='60' height='90'/>";
-			}
-			else {
-				echo "<input xclass='dayRadio' type='radio' name='rqkey' value='" . $riddleArray[$i]["riddle_question_key"];
-				echo "' onclick='document.getElementById(\"answerForm\").submit();'/>";
-			}
-			echo "</td>\n";
-		}
-		echo "</tr>\n";
-	echo "</table>\n";
+	echo '<div class="cbody-right">';
+
+					// puzzle-piece table
+					echo '<table xid="puzzle_pieces" cellspacing="0" cellpadding="0" xborder="border">' . "\n";
+						echo "<tr>\n";
+						echo "<th colspan='2' class='pieceHeader'>Select Day</th>\n";
+						echo "</tr>\n";
+						for ($i=1; $i<=7; $i++) {
+							echo "<tr>\n";
+							echo "<th class='daycell'>$i</th>\n";
+							if ($userRiddleArray[$currentUserID][$i] == $riddleArray[$i]["day"]) {
+								echo "<td class='snakePieceCell'>";
+								echo "<img style='display:block;' src='snake-pieces-side/snake-$i.png' width='90' height='60'/>";
+								echo "</td>\n";
+							}
+							else {
+								echo "<td class='dayRadioCell'>";
+								echo "<input xclass='dayRadio' type='radio' name='rqkey' value='" . $riddleArray[$i]["riddle_question_key"];
+								echo "' onclick='document.getElementById(\"answerForm\").submit();'/>";
+								echo "</td>\n";
+							}
+							echo "</tr>\n";
+						}
+					echo "</table>\n";
+	
+	
+	echo "</div>\n";
 
 	echo "</form>\n";
 	
+
+
+	echo '<br clear="all"/>';
+
+
+
+	echo '<div class="container">' . "\n";
+
 	
 	?>
 	
