@@ -73,15 +73,17 @@ todo
 	
 	if ($answersCorrect != 7) {
 		// current riddle
-		echo '<div id="clue_div" style="color:darkgreen;">' . "\n";
+		echo '<p>Find the B-Tag in YICC\'s Rotunda that solves this riddle:</p>';
+		echo '<div id="clue_div">' . "\n";
 		echo "<h3>" . $riddleArray[$rday]["riddle"] . "</h3>";
 		echo '</div>' . "\n";
 	
-		echo '<p>Find the B-Tag in YICC\'s Rotunda that solves this riddle, then click the Day of Creation below!</p>';
+		echo '<p>Scan the QR-Code, or just type in the three digits:</p>';
 		echo "<div class='btag'>B-Tag Number: ";
 			echo '<input onkeyup=' . "parseMe(document.getElementById(\"cam-qr-result\").value);" . ' id="cam-qr-result" name="ranswer" type="tel" size="4" minlength="3" maxlength="3" class="btag"/>' . "\n";
 			echo ' <span id="wordsForBTag"></span>';
 		echo '</div>';
+		echo '<p>Then click the Day of Creation below!</p>';
 	}
 	?>
 

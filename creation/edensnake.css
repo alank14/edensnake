@@ -43,7 +43,10 @@ input.dayRadio {
 	text-align: center;
 }
 
-
+#clue_div {
+	color:darkgreen;
+	margin-left: 30px;
+}
 
 
 canvas {
