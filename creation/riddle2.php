@@ -26,8 +26,20 @@ todo
 	echo '<link rel="icon" type="image/png" href="images/favicon.png">' . "\n";
 	echo '</head><body>' . "\n";
 
+echo '	<div class="header">';
+echo '    <img src="resources/edensnake-logo.png" alt="EdenSnake" width="80"/>' . "\n";
+
+echo '	  <div class="header-right">';
+echo '	    	<span class="logo">';
+echo $userArray[$currentUserID]["first_name"] . " " . $userArray[$currentUserID]["last_name"];
+echo '</span> <a class="active" href="#logout">Logout</a>';
+echo '	  </div>';
+echo '	</div>';
+
+
 	echo '<div class="container">' . "\n";
 	
+/*
 	// banner
 	echo '<table id="banner" width="100%"><tr bgcolor="lightyellow" valign="top">';
 	echo '<td>';
@@ -35,12 +47,14 @@ todo
 		echo '<img src="resources/edensnake-logo.png" width="100"/>' . "\n";
 	echo '</td>';
 	echo '<td style="text-align:right;">';
-		echo "<p>" . $userArray[$currentUserID]["first_name"] . " " . $userArray[$currentUserID]["last_name"];
+		echo "<p>";
+		echo $userArray[$currentUserID]["first_name"] . " " . $userArray[$currentUserID]["last_name"];
 		echo "<img src='resources/logout.png' width='80'/>\n";
 		echo "</p>\n";
 		echo '</td>';
 	echo '</tr></table>';
-
+*/
+	
 	// feedback message, if any
 	if ($feedbackMessage != '') {
 		echo '<h2 class="feedback">' . $feedbackMessage . '</h2>' . "\n";
