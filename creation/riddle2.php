@@ -61,14 +61,13 @@ todo
 		echo "\tfunction parseMe($" . "theValue) {\n";
 		// echo "\n\t\$enteredText = document.getElementById('firstNameField').value;\n";
 		echo "if (typeof \$answerWords[\$theValue] === 'undefined') {\n";
+			// reset the span to BLANK!
 			echo "\t\t" . 'document.getElementById("wordsForBTag").innerHTML = "";' . "\n";
-			// actually, ,reset the span to BLANK!
 			echo "}\n";
 			echo "else {\n";
-		//	echo "\t\t" . 'alert("THIS indeed MATCHES: " + $theValue + " with big words: " + $answerWords[$theValue]);' . "\n";
+			// set that span to the helpful-feedback words
 			echo "\t\t" . 'document.getElementById("wordsForBTag").innerHTML = $answerWords[$theValue];' . "\n";
 			echo "\t}\n";
-	//	echo "\t\t" . 'alert("Stuff: " + $theValue);' . "\n";
 		echo "}\n";
 	echo "</script>\n";
 	
@@ -151,6 +150,7 @@ todo
 	        label.style.color = 'teal';
 	        clearTimeout(label.highlightTimeout);
 	        label.highlightTimeout = setTimeout(() => label.style.color = 'inherit', 100);
+			parseMe(document.getElementById("cam-qr-result").value);
 		//	alert('got one: ' + result);
 	    }
 
