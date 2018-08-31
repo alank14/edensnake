@@ -5,6 +5,7 @@ $conn = dbOpen($sqlhost, $sqluser, $sqlpass, $sqldb);
 // Initialize Arrays
 
 $riddleArray = array();
+$falseAnswerArray = array();
 $userRiddleArray = array();
 $userArray = array();
 $riddleQuestionKeyArray = array();
@@ -51,6 +52,14 @@ while($row = mysqli_fetch_array($result)){
 	$riddleArray[$row['day']]["qr_style"] = $row['qr_style'];
 
 	$riddleQuestionKeyArray[$row['riddle_question_key']] = $row['day'];
+}
+
+// populate $falseAnswerArray
+$sql = "SELECT riddle_answer_key, riddle_answer FROM false_answers;";
+$result = mysqli_query($conn,$sql) or die(mysqli_error($conn));
+while($row = mysqli_fetch_array($result)){
+	$falseAnswerArray[$row['riddle_answer_key']]["riddle_answer_key"] = $row['riddle_answer_key'];
+	$falseAnswerArray[$row['riddle_answer_key']]["riddle_answer"] = $row['riddle_answer'];
 }
 
 // populate $userArray

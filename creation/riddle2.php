@@ -24,7 +24,6 @@ todo
 	echo '<link rel="stylesheet" href="css/normalize.css">' . "\n";
 	echo '<link rel="stylesheet" href="css/skeleton.css">' . "\n";
 	echo '<link rel="icon" type="image/png" href="images/favicon.png">' . "\n";
-	// echo '<script src="edensnake.js"></script>' . "\n";
 	echo '</head><body>' . "\n";
 
 	echo '<div class="container">' . "\n";
@@ -50,6 +49,29 @@ todo
 	// answer form
 	echo '<form method="get" action="./riddle2.php" id="answerForm">' . "\n";
 
+	echo "<script>\n";
+	// write out javascript array here with all the B-Tag values and their English equivalents
+	echo "var \$answerWords = [];\n";
+	foreach ($falseAnswerArray as $theFalseAnswer) {
+		echo "$" . "answerWords['" . $theFalseAnswer["riddle_answer_key"] . "'] = " . '"' . $theFalseAnswer["riddle_answer"] . '";' . "\n";
+	}
+	foreach ($riddleArray as $theRealAnswer) {
+		echo "$" . "answerWords['" . $theRealAnswer["riddle_answer_key"] . "'] = " . '"' . $theRealAnswer["riddle_answer"] . '";' . "\n";
+	}
+		echo "\tfunction parseMe($" . "theValue) {\n";
+		// echo "\n\t\$enteredText = document.getElementById('firstNameField').value;\n";
+		echo "if (typeof \$answerWords[\$theValue] === 'undefined') {\n";
+			echo "\t\t" . 'document.getElementById("wordsForBTag").innerHTML = "";' . "\n";
+			// actually, ,reset the span to BLANK!
+			echo "}\n";
+			echo "else {\n";
+		//	echo "\t\t" . 'alert("THIS indeed MATCHES: " + $theValue + " with big words: " + $answerWords[$theValue]);' . "\n";
+			echo "\t\t" . 'document.getElementById("wordsForBTag").innerHTML = $answerWords[$theValue];' . "\n";
+			echo "\t}\n";
+	//	echo "\t\t" . 'alert("Stuff: " + $theValue);' . "\n";
+		echo "}\n";
+	echo "</script>\n";
+	
 	if ($answersCorrect != 7) {
 		// current riddle
 		echo '<div id="clue_div" style="color:darkgreen;">' . "\n";
@@ -57,9 +79,10 @@ todo
 		echo '</div>' . "\n";
 	
 		echo '<p>Find the B-Tag in YICC\'s Rotunda that solves this riddle, then click the Day of Creation below!</p>';
-		echo "<h3>B-Tag Number: ";
-			echo '<input id="cam-qr-result" name="ranswer" type="tel" size="4" minlength="3" maxlength="3" class="btag"/>' . "\n";
-		echo '</h3>';
+		echo "<div class='btag'>B-Tag Number: ";
+			echo '<input onkeyup=' . "parseMe(document.getElementById(\"cam-qr-result\").value);" . ' id="cam-qr-result" name="ranswer" type="tel" size="4" minlength="3" maxlength="3" class="btag"/>' . "\n";
+			echo ' <span id="wordsForBTag"></span>';
+		echo '</div>';
 	}
 
 	// puzzle-piece table
@@ -90,7 +113,7 @@ todo
 	
 	?>
 	
-	<h1>Scan from WebCam:</h1>
+	<h3>Scan from WebCam:</h3>
 	<div class="cam">
 <!--	    <xvideo style="width:320px;height=180;" muted autoplay playsinline xid="qr-video"></xvideo> -->
 	    <video style="width:180px;height=180px;" muted autoplay playsinline id="qr-video"></video>
@@ -104,6 +127,7 @@ todo
 	<span id="xcam-qr-result" style="font-size:36px;">None</span>
 	
 	
+	<!-- Start Webcam Javascript -->
 	<script type="module">
 	    import QrScanner from "./qr-scanner.min.js";
 	    const video = document.getElementById('qr-video');
@@ -174,12 +198,11 @@ todo
 	        }
 	    }
 	</script>
+	<!-- End Webcam Javascript -->
 
 	
 	<?php
 	
-	
-	// echo '<script src="resources/creation.js"></script>' . "\n";
 	
 	
 
