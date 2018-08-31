@@ -30,7 +30,7 @@ echo '	<div class="header">';
 echo '    <img src="resources/edensnake-logo.png" alt="EdenSnake" width="80"/>' . "\n";
 
 echo '	  <div class="header-right">';
-echo '	    	<span class="logo">';
+echo '	    	<span class="headerspan">';
 echo $userArray[$currentUserID]["first_name"] . " " . $userArray[$currentUserID]["last_name"];
 echo '</span> <a class="active" href="#logout">Logout</a>';
 echo '	  </div>';
@@ -87,17 +87,17 @@ echo '	</div>';
 	
 	if ($answersCorrect != 7) {
 		// current riddle
-		echo '<p>Find the B-Tag in YICC\'s Rotunda that solves this riddle:</p>';
+		echo '<p class="instructions">Find the B-Tag in YICC\'s Rotunda that solves this riddle:</p>';
 		echo '<div id="clue_div">' . "\n";
-		echo "<h3>" . $riddleArray[$rday]["riddle"] . "</h3>";
+		echo "<h3 class='clue_hint'>" . $riddleArray[$rday]["riddle"] . "</h3>";
 		echo '</div>' . "\n";
 	
-		echo '<p>Scan the QR-Code, or just type in the three digits:</p>';
+		echo '<p class="instructions">Scan the QR-Code, or just type in the three digits:</p>';
 		echo "<div class='btag'>B-Tag Number: ";
 			echo '<input onkeyup=' . "parseMe(document.getElementById(\"cam-qr-result\").value);" . ' id="cam-qr-result" name="ranswer" type="tel" size="4" minlength="3" maxlength="3" class="btag"/>' . "\n";
 			echo ' <span id="wordsForBTag"></span>';
 		echo '</div>';
-		echo '<p>Then click the Day of Creation below!</p>';
+		echo '<p class="instructions">Then click the Day of Creation below!</p>';
 	}
 	?>
 

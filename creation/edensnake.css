@@ -63,9 +63,14 @@ div.cam {
     margin-bottom: 16px;
 }
 
+p.instructions {
+	font-size: 12px;
+	margin-bottom: 0px;
+}
 
-
-
+.clue_hint {
+	margin-bottom: 0px;
+}
 
 
 
@@ -81,7 +86,7 @@ div.cam {
 }
 
 /* Style the header links */
-.header a, span {
+.header a, span.headerspan {
   float: left;
   color: black;
   text-align: center;
