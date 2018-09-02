@@ -5,22 +5,31 @@ todo
 	* Scoreboard
 	* Login system
 	* smart form submit - don't submit unless a b-tag is typed in AND a day is selected
+
+	drop the logout feature for the kids? make it a DB flag that lets them log out? allow_logout flag
+
+	change to POST for login
+
+	after resetting game, you can keep hitting REFRESH and see the different questions, even though the next_question field has been set.
 */
-	if (isset($_GET['myUserId'])) {
+	$cookie_name = "edenuser";
+	if (isset($_POST['myUserId'])) {
 		session_start();
-		$latestMatchingUserID = $_GET['myUserId'];
+		$latestMatchingUserID = $_POST['myUserId'];
 		
 		$_SESSION['userID'] = $latestMatchingUserID;
-		$currentUserID = '1';
+		// $currentUserID = '1';
 		$currentUserID = $latestMatchingUserID;
 		
-		$cookie_name = "edenuser";
 		$cookie_value = $latestMatchingUserID;
 		setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); // 86400 = 1 day
 		
 	}
-	else {
+	else if(!isset($_COOKIE[$cookie_name])) {
 		header('Location: login.php');
+	}
+	else {
+	    $currentUserID = $_COOKIE[$cookie_name];
 	}
 
 	header('Content-Type: text/html; charset=utf-8');
@@ -53,6 +62,8 @@ echo '</span> <a class="active" href="login.php">Logout</a>';
 echo '	  </div>';
 echo '	</div>';
 
+
+echo "<h1>Here is my current User ID: " . $currentUserID . "</h1>\n";
 
 	echo '<div class="cbody">' . "\n";
 
