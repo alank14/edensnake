@@ -6,14 +6,33 @@ todo
 	* Login system
 	* smart form submit - don't submit unless a b-tag is typed in AND a day is selected
 */
+	if (isset($_GET['myUserId'])) {
+		session_start();
+		$latestMatchingUserID = $_GET['myUserId'];
+		
+		$_SESSION['userID'] = $latestMatchingUserID;
+		$currentUserID = '1';
+		$currentUserID = $latestMatchingUserID;
+		
+		$cookie_name = "edenuser";
+		$cookie_value = $latestMatchingUserID;
+		setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); // 86400 = 1 day
+		
+	}
+	else {
+		header('Location: login.php');
+	}
+
 	header('Content-Type: text/html; charset=utf-8');
 	include('config.php');
 	include('functions.php');
 
 	// todo: replace this with a proper login system
-	$currentUserID = '1';
 	
 	include('initialize.php');
+
+	
+
 
 	echo "<!DOCTYPE html>\n";
 	echo "<html lang='en'><head><title>EdenSnake</title>\n";
@@ -30,7 +49,7 @@ echo '    <img src="resources/edensnake-logo.png" alt="EdenSnake" width="80"/>' 
 echo '	  <div class="header-right">';
 echo '	    	<span class="headerspan">';
 echo $userArray[$currentUserID]["first_name"] . " " . $userArray[$currentUserID]["last_name"];
-echo '</span> <a class="active" href="#logout">Logout</a>';
+echo '</span> <a class="active" href="login.php">Logout</a>';
 echo '	  </div>';
 echo '	</div>';
 

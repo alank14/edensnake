@@ -6,6 +6,11 @@ todo
 	* Login system
 	* smart form submit - don't submit unless a b-tag is typed in AND a day is selected
 */
+// log out of any prior sessions
+	setcookie("edenuser", "", time() - 3600);
+	session_start();
+	session_destroy();
+
 	header('Content-Type: text/html; charset=utf-8');
 	include('config.php');
 	include('functions.php');
@@ -50,6 +55,16 @@ todo
 	echo '<link rel="stylesheet" href="css/skeleton.css">' . "\n";
 	echo '<link rel="icon" type="image/png" href="images/favicon.png">' . "\n";
 	// echo '<script src="edensnake.js"></script>' . "\n";
+	
+	
+	echo '<script>' . "\n";
+	echo "var \$localUserArray = [];\n";
+	foreach ($userArray AS $theUser) {
+		echo '$localUserArray[' . $theUser["user_id"] . '] = "' . $theUser["first_name"] . '";' . "\n";
+	}
+	echo '</script>' . "\n";
+	
+	
 	echo '</head><body>' . "\n";
 
 	echo '<div class="container">' . "\n";
@@ -84,21 +99,59 @@ todo
 	echo "<ul>\n";
 	
 	?>
+	<form method="get" action="riddle2.php">
+			<input id="myUserId" name="theUserId" type="hidden"/>
+	</form>
 	<script>
 		function parseMe($theIdSet) {
 			$enteredText = document.getElementById('firstNameField').value;
 //			alert("Ids: " + $theIdSet + " - text: " + $enteredText);
 
 			$myIDArray = $theIdSet.split(/\s*,\s*/);
+			$numberOfMatches = 0;
 			for (let $myID of $myIDArray) {
 				// test here for a match
 				// Use PHP to write out a Javascript Array out of all the User IDs and First and Last Names
 				// look up the First Name for this ID, in this Array
 				// if it's a UNIQUE match, then we are done... log in as that User ID.
-				alert("Check to see if string [" + $enteredText + "] matches the first name for User ID " + $myID);
+				
+				$currentFirstName = $localUserArray[$myID].toLowerCase();
+
+				
+				if ($enteredText != "") {
+					if ($currentFirstName.startsWith($enteredText.toLowerCase())) {
+						// alert ("it is a match!");
+						$numberOfMatches++;
+						$latestMatchingUserID = $myID;
+						$latestMatchingFirstName = $currentFirstName;
+					}
+					// alert("Check to see if string [" + $enteredText + "] matches the first name (" + $currentFirstName + ") - " + $currentFirstName.startsWith($enteredText) + " - for User ID " + $myID);
+				}
+			} // end for-loop
+			if ($numberOfMatches == 1) {
+				// log them in with this ID!
+				// alert ("Num of matches: " + $numberOfMatches + " with last ID being: " + $latestMatchingUserID);
+				// these three are PHP!!!!
+			    var form = document.createElement('form');
+			    form.method = "get";
+			    form.action = "riddle2.php";
+				
+		        var input = document.createElement('input');
+		        input.type = 'hidden';
+		        input.name = 'myUserId';
+		        input.value = $latestMatchingUserID;
+		        form.appendChild(input);
+				
+				document.body.appendChild(form);
+
+			    form.submit();
+				
+				/*
+				session_start();
+				$_SESSION['username'] = $latestMatchingFirstName;
+				$_SESSION['userID'] = $latestMatchingUserID;
+				*/
 			}
-		 
-			
 		}
 		
 		var $currentNameFormSpanID = '';
