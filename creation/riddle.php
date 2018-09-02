@@ -62,9 +62,6 @@ echo '</span> <a class="active" href="login.php">Logout</a>';
 echo '	  </div>';
 echo '	</div>';
 
-
-echo "<h1>Here is my current User ID: " . $currentUserID . "</h1>\n";
-
 	echo '<div class="cbody">' . "\n";
 
 	echo '<div class="cbody-left">' . "\n";
