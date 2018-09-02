@@ -1,16 +1,13 @@
 <?php
 /*
-todo
-	* purchase domain?
-	* Scoreboard
-	* Login system
-	* smart form submit - don't submit unless a b-tag is typed in AND a day is selected
+todo:
 
 	drop the logout feature for the kids? make it a DB flag that lets them log out? allow_logout flag
 
-	change to POST for login
-
 	after resetting game, you can keep hitting REFRESH and see the different questions, even though the next_question field has been set.
+
+	create a Scoreboard
+
 */
 	$cookie_name = "edenuser";
 	if (isset($_POST['myUserId'])) {
