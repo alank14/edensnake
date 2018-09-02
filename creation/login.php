@@ -99,9 +99,6 @@ todo
 	echo "<ul>\n";
 	
 	?>
-	<form method="get" action="riddle2.php">
-			<input id="myUserId" name="theUserId" type="hidden"/>
-	</form>
 	<script>
 		function parseMe($theIdSet) {
 			$enteredText = document.getElementById('firstNameField').value;
@@ -133,8 +130,8 @@ todo
 				// alert ("Num of matches: " + $numberOfMatches + " with last ID being: " + $latestMatchingUserID);
 				// these three are PHP!!!!
 			    var form = document.createElement('form');
-			    form.method = "get";
-			    form.action = "riddle2.php";
+			    form.method = "post";
+			    form.action = "riddle.php";
 				
 		        var input = document.createElement('input');
 		        input.type = 'hidden';
@@ -167,14 +164,14 @@ todo
 
 			// every time a character is typed, compare that with a letter in the array
 			// if the first three match exactly one value, then 
-			document.getElementById($theSpan).innerHTML = " First name: <input id='firstNameField' onkeyup='parseMe(\"" + $theIdSet + "\");' xonkeypress='this.onchange();' xonpaste='this.onchange();' xoninput='this.onchange();' type='text' name='es_firstName' size='6'/> " + $theLastName;
+			document.getElementById($theSpan).innerHTML = " First name: <input id='firstNameField' onkeyup='parseMe(\"" + $theIdSet + "\");' type='text' name='es_firstName' size='6'/> " + $theLastName;
 			
 		}
 		</script>
 	<?php
 	$i = 1;
 	foreach ($userLastNameArray AS $theLastName) {
-		echo "<li><a href='javascript:askFirst(\"login_span_" . $i . '","' . $theLastName['last_name'] . '","' . $theLastName['first_name_list'] . '"' . ");'>" . $theLastName["last_name"] . "</a><span id='login_span_$i'></span>\n";
+		echo "<li><a href='javascript:askFirst(\"login_span_" . $i . '","' . $theLastName['last_name'] . '","' . $theLastName['first_name_list'] . '"' . ");    document.getElementById(\"firstNameField\").focus();'>" . $theLastName["last_name"] . "</a><span id='login_span_$i'></span>\n";
 		$i++;
 	}
 	echo "</ul>\n";
