@@ -4,8 +4,6 @@ todo:
 
 	drop the logout feature for the kids? make it a DB flag that lets them log out? allow_logout flag
 
-	after resetting game, you can keep hitting REFRESH and see the different questions, even though the next_question field has been set.
-
 	create a Scoreboard
 
 */
@@ -46,7 +44,7 @@ todo:
 	echo '<meta name="viewport" content="width=device-width, initial-scale=1">' . "\n";
 	echo '<link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">' . "\n";
 	echo '<link rel="stylesheet" href="edensnake.css">' . "\n";
-	echo '<link rel="icon" type="image/png" href="images/favicon.png">' . "\n";
+	echo '<link rel="icon" type="image/png" href="resources/favicon.png">' . "\n";
 	echo '</head><body>' . "\n";
 
 echo '	<div class="header">';

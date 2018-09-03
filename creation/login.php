@@ -51,9 +51,10 @@ todo
 	echo '<meta name="viewport" content="width=device-width, initial-scale=1">' . "\n";
 	echo '<link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">' . "\n";
 	echo '<link rel="stylesheet" href="edensnake.css">' . "\n";
-	echo '<link rel="stylesheet" href="css/normalize.css">' . "\n";
-	echo '<link rel="stylesheet" href="css/skeleton.css">' . "\n";
-	echo '<link rel="icon" type="image/png" href="images/favicon.png">' . "\n";
+//	echo '<link rel="stylesheet" href="css/normalize.css">' . "\n";
+//	echo '<link rel="stylesheet" href="css/skeleton.css">' . "\n";
+	echo '<link rel="stylesheet" href="edensnake.css">' . "\n";
+	echo '<link rel="icon" type="image/png" href="resources/favicon.png">' . "\n";
 	// echo '<script src="edensnake.js"></script>' . "\n";
 	
 	
@@ -67,21 +68,17 @@ todo
 	
 	echo '</head><body>' . "\n";
 
-	echo '<div class="container">' . "\n";
-	
-	// banner
-	echo '<table id="banner" width="100%"><tr bgcolor="lightyellow" valign="top">';
-	echo '<td>';
-		// echo '<img src="resources/BK-logo-final.png" width="40"/>' . "\n";
-		echo '<img src="resources/edensnake-logo.png" width="100"/>' . "\n";
-	echo '</td>';
-	echo '<td style="text-align:right;">';
-	// todo: fix hardwired user
-		echo "<p>" . $userArray[$currentUserID]["first_name"] . " " . $userArray[$currentUserID]["last_name"];
-		echo "<img src='resources/logout.png' width='80'/>\n";
-		echo "</p>\n";
-		echo '</td>';
-	echo '</tr></table>';
+	echo '	<div class="header">';
+	echo '    <img src="resources/edensnake-logo.png" alt="EdenSnake" width="80"/>' . "\n";
+
+/*
+	echo '	  <div class="header-right">';
+	echo '	    	<span class="headerspan">';
+	echo $userArray[$currentUserID]["first_name"] . " " . $userArray[$currentUserID]["last_name"];
+	echo '</span> <a class="active" href="login.php">Logout</a>';
+	echo '	  </div>';
+*/
+	echo '	</div>';
 
 
 	$userLastNameArray = array();
@@ -96,7 +93,9 @@ todo
 		$userLastNameArray[$theUser["last_name"]]["last_name"] = $theUser["last_name"];
 	}
 
-	echo "<ul>\n";
+	echo "<p class='loginInstructions'>To log in, select your last name and enter the beginning of your first name.</p>\n";
+	
+	echo "<ul class='logins'>\n";
 	
 	?>
 	<script>
