@@ -163,7 +163,7 @@ echo '	</div>';
 							echo "<th class='daycell'>$i</th>\n";
 							if ($userRiddleArray[$currentUserID][$i] == $riddleArray[$i]["day"]) {
 								echo "<td class='snakePieceCell'>";
-								echo "<img style='display:block;' src='snake-pieces-side/snake-$i.png' width='90' height='60'/>";
+								echo "<img style='display:block;' src='snake-pieces/snake-$i.png' width='90' height='60'/>";
 								echo "</td>\n";
 							}
 							else {
@@ -196,7 +196,6 @@ echo '<hr/>';
 			echo '<div id="clue_answer_div">' . "\n";
 			echo '<p>B-Tag = ' . $riddleArray[$rday]["riddle_answer_key"] . ' and Day = ' . $riddleArray[$rday]["day"];
 			echo ' (' . $riddleArray[$rday]["riddle_answer"] . ')</p>';
-			// echo "<img src='sample-photos/sample-$rday.png' height='200' xalign='left'/>\n";
 			echo '</div>' . "\n";
 	}
 ?>

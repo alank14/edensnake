@@ -1,31 +1,18 @@
 <?php
-/*
-todo
-	* purchase domain?
-	* Scoreboard
-	* Login system
-	* smart form submit - don't submit unless a b-tag is typed in AND a day is selected
-*/
-// log out of any prior sessions
+
+	// log out of any prior sessions
+	
 	setcookie("edenuser", "", time() - 3600);
 	session_start();
 	session_destroy();
 
-	header('Content-Type: text/html; charset=utf-8');
+	// populate $userArray
+
 	include('config.php');
 	include('functions.php');
 
-	// todo: replace this with a proper login system
-	$currentUserID = '1';
-	
-	include('initialize.php');
-
-	$conn = dbOpen($sqlhost, $sqluser, $sqlpass, $sqldb);
-
-
 	$userArray = array();
-	
-	// populate $userArray
+	$conn = dbOpen($sqlhost, $sqluser, $sqlpass, $sqldb);
 	$sql = "SELECT id AS user_id, name_title, first_name, last_name, username, capture_style, hint_level
 		FROM users
 		ORDER BY last_name, first_name;";
@@ -40,10 +27,11 @@ todo
 		$userArray[$row['user_id']]["hint_level"] = $row['hint_level'];
 		
 	}
-
 	dbClose($conn);
 
+	// start page
 
+	header('Content-Type: text/html; charset=utf-8');
 
 	echo "<!DOCTYPE html>\n";
 	echo "<html lang='en'><head><title>EdenSnake: Login</title>\n";
@@ -51,33 +39,22 @@ todo
 	echo '<meta name="viewport" content="width=device-width, initial-scale=1">' . "\n";
 	echo '<link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">' . "\n";
 	echo '<link rel="stylesheet" href="edensnake.css">' . "\n";
-//	echo '<link rel="stylesheet" href="css/normalize.css">' . "\n";
-//	echo '<link rel="stylesheet" href="css/skeleton.css">' . "\n";
 	echo '<link rel="stylesheet" href="edensnake.css">' . "\n";
 	echo '<link rel="icon" type="image/png" href="resources/favicon.png">' . "\n";
-	// echo '<script src="edensnake.js"></script>' . "\n";
-	
-	
+
+	// create local javascript array of all users
 	echo '<script>' . "\n";
 	echo "var \$localUserArray = [];\n";
 	foreach ($userArray AS $theUser) {
 		echo '$localUserArray[' . $theUser["user_id"] . '] = "' . $theUser["first_name"] . '";' . "\n";
 	}
 	echo '</script>' . "\n";
-	
-	
-	echo '</head><body>' . "\n";
+	echo '</head>' . "\n";
+
+	echo '<body>' . "\n";
 
 	echo '	<div class="header">';
 	echo '    <img src="resources/edensnake-logo.png" alt="EdenSnake" width="80"/>' . "\n";
-
-/*
-	echo '	  <div class="header-right">';
-	echo '	    	<span class="headerspan">';
-	echo $userArray[$currentUserID]["first_name"] . " " . $userArray[$currentUserID]["last_name"];
-	echo '</span> <a class="active" href="login.php">Logout</a>';
-	echo '	  </div>';
-*/
 	echo '	</div>';
 
 
