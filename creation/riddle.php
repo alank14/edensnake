@@ -122,30 +122,10 @@ echo '	</div>';
 	}
 	?>
 
-
-<style type="text/css">
-.cam, .cam video {
-  position: relative;
-  
-}
-.cam img {
-  z-index: 101;
-}
-/* .cam img:first-child { */
-	.cam video {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 100;
-}
-</style>
-
-
 	<!-- webcam -->
 	<div class="cam">
 	    <video style="width:180px;height=180px;" muted autoplay playsinline id="qr-video"></video>
 	    <canvas id="debug-canvas"></canvas>
-  <img src="resources/crosshairs.png" width="180" height="180"/>
 	</div>
 
 
