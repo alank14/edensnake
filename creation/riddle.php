@@ -122,12 +122,39 @@ echo '	</div>';
 	}
 	?>
 
+
+<style type="text/css">
+.cam, .cam video {
+  position: relative;
+  
+}
+.cam img {
+  z-index: 101;
+}
+/* .cam img:first-child { */
+	.cam video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 100;
+}
+</style>
+
+
 	<!-- webcam -->
 	<div class="cam">
-<!--	    <xvideo style="width:320px;height=180;" muted autoplay playsinline xid="qr-video"></xvideo> -->
 	    <video style="width:180px;height=180px;" muted autoplay playsinline id="qr-video"></video>
 	    <canvas id="debug-canvas"></canvas>
+  <img src="resources/crosshairs.png" width="180" height="180"/>
 	</div>
+
+
+<!--
+<div class="pngcontainer1">
+  <img src="sample-photos/sample-1.png" width="180" height="180"/>
+  <img src="crosshair.png" width="180" height="180"/>
+</div>
+-->
 
 
 <input id="showHideHintButton" type="button" onclick="showHideHint()" value="Show Hint"/>
