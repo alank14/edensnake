@@ -27,11 +27,11 @@
 		$theBase64 = $_POST['base64'];
 	}
 
-	$filepath = "/var/www/edensnake/test/p6/MobileCameraTemplate-master/sent-images/image3.jpg";
+	$filepath = "/var/www/edensnake/creation/pix/sent-images/new_image.jpg";
 
 	// Save the image in a defined path
 	base64_to_jpeg($theBase64,$filepath);
 ?>
 <h3>File Saved: <a href="./">back to photo taker</a></h3>
 
-<img src="https://edensnake.com/test/p6/MobileCameraTemplate-master/sent-images/image3.jpg">
+<img src="https://edensnake.com/creation/pix/sent-images/new_image.jpg">

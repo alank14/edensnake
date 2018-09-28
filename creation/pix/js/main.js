@@ -225,13 +225,63 @@ function takeSnapshot() {
 	    reader.readAsDataURL(blob); 
 	    reader.onloadend = function() {
 	        base64data = reader.result;                
+	     //   console.log(base64data);
 
 	        document.getElementById('base64').value = base64data;
+			
 			document.getElementById('form').submit();
 
-			// console.log(base64data);
-			// alert(base64data);
+		// alert(base64data);
+//		alert(JSON.stringify(blob));
+        // do something with the image blob
+		
+// var url = http://www.edensnake.com/test/p4
+
+/*
+
+		var formData = new FormData();
+		formData.append("name", blob, filename);
+		// and then sending the form using an XMLHttpRequest like:
+
+		var xhr = new XMLHttpRequest();
+		xhr.open('POST', url, true);
+		xhr.send(formData);
+*/
+		
+		// https://stackoverflow.com/questions/36044064/saving-blob-object-as-a-file-on-server
+		// https://ourcodeworld.com/articles/read/76/how-to-save-a-base64-image-from-javascript-with-php
+		
+//		var image = "data:image/png;base64,BBBFBfj42Pj4"; // to create a image read the previous example
+
+   // on the submit event, generate a image from the canvas and save the data in the textarea
+   document.getElementById('form').addEventListener("submit",function(){
+//      var canvas = document.getElementById("myCanvasImage");
+//      var image = canvas.toDataURL(); // data:image/png....
+//      document.getElementById('base64').value = image;
+      document.getElementById('base64').value = base64data;
+   },false);
+
+
+}
+
+   /*
+		
+		$.ajax({
+		  url:"save.php",
+		  // send the base64 post parameter
+		  data:{
+		    base64: blob
+		  },
+		  // important POST method !
+		  type:"post",
+		  complete:function(){
+		    console.log("Ready");
+		  }
+		});
+		*/
+
     });
+
 }
 
 // https://hackernoon.com/how-to-use-javascript-closures-with-confidence-85cd1f841a6b
