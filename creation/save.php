@@ -46,7 +46,7 @@
 	// Save the image in a defined path
 	base64_to_jpeg($theBase64,$filepath);
 	
-	echo '<h3>File Saved: <a href="./">back to photo taker</a></h3>' . "\n";
+	echo '<h3>File Saved: <a href="./photo-index.php">back to photo taker</a></h3>' . "\n";
 	echo '<img src="https://edensnake.com' . $filebase . '"/>' . "\n";
 ?>
 
