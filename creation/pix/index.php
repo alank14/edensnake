@@ -28,14 +28,25 @@
   
 
 <?php
-	
-include 'pix-header.php';
-	
+	include 'pix-header.php';
+
+	if (isset($_GET['creationDay'])) {
+		$theCreationDay = $_GET['creationDay'];
+	}
+	else {
+		$theCreationDay = '5';
+	}
+
+	echo '<form method="POST" name="form" id="form" action="save.php">' . "\n";
+	echo "\t" . '<input type="hidden" name="creationDay" value="' . $theCreatonDay . '">' . "\n";
+	echo "\t" . '<textarea name="base64" id="base64"></textarea>' . "\n";
+	echo '</form>' . "\n";
+
 ?>
-  <form method="POST" name="form" id="form" action="save.php">
-	  <input type="hidden" name="creationDay" value="3">
-    <textarea name="base64" id="base64"></textarea>
-  </form>
+
+
+
+
 
   
 </body>
