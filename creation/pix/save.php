@@ -41,7 +41,7 @@
 	
 	$datestamp =  date("Y-m-d_H-i-s", $time);
 
-	$filebase = "/creation/pix/sent-images/$theUser_$theCreationDay_$datestamp.jpg";
+	$filebase = "/creation/pix/sent-images/${theUser}_${theCreationDay}_$datestamp.jpg";
 	$filepath = "/var/www/edensnake" . $filebase;
 
 	// Save the image in a defined path
