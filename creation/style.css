@@ -158,3 +158,13 @@ button {
     }
 
 } 
+
+.photoQuestion {
+	color: white;
+	text-align: center;
+	font-family: Arial, helvetica;
+}
+
+.photoKicker {
+	font-size: 16px;
+}

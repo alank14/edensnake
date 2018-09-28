@@ -9,6 +9,10 @@
   <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
+	<div class="photoQuestion">
+		<h1><span class="photoKicker">Take a photo of somebody...</span> wearing black and white</h1>
+</h3>
+	</div>
   <div id="container">
     <div id="vid_container">
         <video id="video" autoplay playsinline></video>
