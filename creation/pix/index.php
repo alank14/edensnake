@@ -27,8 +27,12 @@
   <script src="js/main.js"></script>
   
 
+<?php
+	
+include 'pix-header.php';
+	
+?>
   <form method="POST" name="form" id="form" action="save.php">
-	  <input type="hidden" name="user" value="testValue">
 	  <input type="hidden" name="creationDay" value="3">
     <textarea name="base64" id="base64"></textarea>
   </form>

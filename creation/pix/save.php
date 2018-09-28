@@ -4,6 +4,8 @@
 	// from https://ourcodeworld.com/articles/read/76/how-to-save-a-base64-image-from-javascript-with-php
 	// and https://www.kasperkamperman.com/blog/camera-template/
 	
+	include 'pix-header.php';
+	
 	function base64_to_jpeg($base64_string, $output_file) {
 	    // open the output file for writing
 	    $ifp = fopen( $output_file, 'wb' ); 
@@ -22,33 +24,8 @@
 	    return $output_file; 
 	}
 	
-	$cookie_name = "edenuser";
-	if (isset($_POST['myUserId'])) {
-		session_start();
-		$latestMatchingUserID = $_POST['myUserId'];
-		
-		$_SESSION['userID'] = $latestMatchingUserID;
-		// $currentUserID = '1';
-		$currentUserID = $latestMatchingUserID;
-		
-		$cookie_value = $latestMatchingUserID;
-		setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); // 86400 = 1 day
-		
-	}
-	else if(!isset($_COOKIE[$cookie_name])) {
-		header('Location: ../login.php');
-	}
-	else {
-	    $currentUserID = $_COOKIE[$cookie_name];
-	}
-
-	
 	if (isset($_POST['base64'])) {
 		$theBase64 = $_POST['base64'];
-	}
-
-	if (isset($_POST['user'])) {
-		$theUser = $_POST['user'];
 	}
 
 	if (isset($_POST['creationDay'])) {
