@@ -37,13 +37,19 @@
 	
 	date_default_timezone_set("America/Los_Angeles");
 
-	$datestamp =  date("Y-m-d_h-i-sa", $d);
+	$time = time(); 
+	
+	$datestamp =  date("Y-m-d_H-i-s", $time);
 
-	$filepath = "/var/www/edensnake/creation/pix/sent-images/$theUser_$theCreationDay_$datestamp.jpg";
+	$filebase = "/creation/pix/sent-images/$theUser_$theCreationDay_$datestamp.jpg";
+	$filepath = "/var/www/edensnake" . $filebase;
 
 	// Save the image in a defined path
 	base64_to_jpeg($theBase64,$filepath);
+	
+	echo '<h3>File Saved: <a href="./">back to photo taker</a></h3>' . "\n";
+	echo '<img src="https://edensnake.com' . $filebase . '"/>' . "\n";
 ?>
-<h3>File Saved: <a href="./">back to photo taker</a></h3>
 
-<img src="https://edensnake.com/creation/pix/sent-images/new_image.jpg">
+
+
