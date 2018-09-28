@@ -27,7 +27,19 @@
 		$theBase64 = $_POST['base64'];
 	}
 
-	$filepath = "/var/www/edensnake/creation/pix/sent-images/new_image.jpg";
+	if (isset($_POST['user'])) {
+		$theUser = $_POST['user'];
+	}
+
+	if (isset($_POST['creationDay'])) {
+		$theCreationDay = $_POST['creationDay'];
+	}
+	
+	date_default_timezone_set("America/Los_Angeles");
+
+	$datestamp =  date("Y-m-d_h-i-sa", $d);
+
+	$filepath = "/var/www/edensnake/creation/pix/sent-images/$theUser_$theCreationDay_$datestamp.jpg";
 
 	// Save the image in a defined path
 	base64_to_jpeg($theBase64,$filepath);
