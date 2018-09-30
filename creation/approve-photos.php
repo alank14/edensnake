@@ -103,27 +103,27 @@
 	
 	echo "<h3>";
 	echo "<a href='./approve-photos.php'";
-	if ($theApproveStatus = 'unapproved') {
+	if ($theApproveStatus == 'unapproved') {
 		echo " class='currentApprovalPage'";
 	}
 	echo ">Unapproved</a>";
 	echo " | <a href='./approve-photos.php?approveStatus=approved'";
-	if ($theApproveStatus = 'approved') {
+	if ($theApproveStatus == 'approved') {
 		echo " class='currentApprovalPage'";
 	}
 	echo ">Approved</a>";
 	echo " | <a href='./approve-photos.php?approveStatus=rejected'";
-	if ($theApproveStatus = 'rejected') {
+	if ($theApproveStatus == 'rejected') {
 		echo " class='currentApprovalPage'";
 	}
 	echo ">Rejected</a>";
 	echo " | <a href='./approve-photos.php?approveStatus=reviewed'";
-	if ($theApproveStatus = 'reviewed') {
+	if ($theApproveStatus == 'reviewed') {
 		echo " class='currentApprovalPage'";
 	}
 	echo ">(Approved or Rejected)</a>";
 	echo " | <a href='./approve-photos.php?approveStatus=all'";
-	if ($theApproveStatus = 'all') {
+	if ($theApproveStatus == 'all') {
 		echo " class='currentApprovalPage'";
 	}
 	echo ">All</a>";
