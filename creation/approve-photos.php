@@ -36,8 +36,7 @@
 				, riddles
 			WHERE
 				photos.active = '1'
-				AND photos.approved IS NULL
-				AND photos.approved <> '-1'
+				AND photos.approved = '0'
 				AND photos.user_id = users.id
 				AND riddles.day = photos.day
 			ORDER BY
@@ -47,7 +46,7 @@
 				;";
 	
 	
-				echo "<pre>$sql</pre>\n";
+			//	echo "<pre>$sql</pre>\n";
 				
 	$result = mysqli_query($conn,$sql) or die(mysqli_error($conn));
 
