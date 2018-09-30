@@ -39,10 +39,33 @@
 	if ($photoToReject != '') {
 		$sql = 'UPDATE photos SET approved="2" WHERE id="' . $photoToReject . '";';
 	}
-	echo "<h3>DEBUG: " . $sql . "</h3>\n";
+//	echo "<h3>DEBUG: " . $sql . "</h3>\n";
 	
 	$result = mysqli_query($conn,$sql) or die(mysqli_error($conn));
 
+
+	if (isset($_GET['approveStatus'])) {
+		$theApproveStatus = $_GET['approveStatus'];
+	}
+	else {
+		$theApproveStatus = 'unapproved';
+	}
+	
+	if ($theApproveStatus == 'approved') {
+		$sqlApproveFragment = "AND photos.approved = '1'";
+	}
+	else if ($theApproveStatus == 'rejected') {
+		$sqlApproveFragment = "AND photos.approved = '2'";
+	}
+	else if ($theApproveStatus == 'reviewed') {
+		$sqlApproveFragment = "AND photos.approved > 0";
+	}
+	else if ($theApproveStatus == 'all') {
+		$sqlApproveFragment = "";
+	}
+	else
+		$sqlApproveFragment = "AND photos.approved = '0'";
+	}
 
 	$sql = "SELECT 
 				photos.filename
@@ -51,13 +74,14 @@
 				, users.first_name
 				, users.last_name
 				, riddles.photo_long
+				, photos.approved
 			FROM 
 				photos
 				, users
 				, riddles
 			WHERE
 				photos.active = '1'
-				AND photos.approved = '0'
+				$sqlApproveFragment
 				AND photos.user_id = users.id
 				AND riddles.day = photos.day
 			ORDER BY
@@ -73,6 +97,14 @@
 
 	$theCurrentDay = '0';
 	
+	echo "<h3>";
+	echo "<a href='./approve-photos.php'>Unapproved</a>";
+	echo " | <a href='./approve-photos.php?approveStatus=approved'>Approved</a>";
+	echo " | <a href='./approve-photos.php?approveStatus=rejected'>Rejected</a>";
+	echo " | <a href='./approve-photos.php?approveStatus=reviewed'>(Approved or Rejected)</a>";
+	echo " | <a href='./approve-photos.php?approveStatus=all'>All</a>";
+	echo "</h3>";
+	
 	echo "<table cellpadding='3'>";
 	while($row = mysqli_fetch_array($result)){
 		echo "<tr valign='top'>";
@@ -87,7 +119,21 @@
 		}
 		echo '<td>' . $row['first_name'];
 			echo ' ' . $row['last_name'] . "</td>\n";
+			
 		echo "<td><img src='/creation/sent-images/" . $row['filename'] . "' width='200'/></td>";
+
+		echo "<td>";
+		if ($row['approved'] == '0') {
+			echo "unapproved";
+		}
+		else if ($row['approved'] == '1') {
+			echo "approved";
+		}
+		else if ($row['approved'] == '2') {
+			echo "unapproved";
+		}
+		echo "</td>\n";
+
 		echo "<td>";
 		echo "<form method='get' action='./approve-photos.php'>\n";
 		echo "<input type='hidden' name='approvePhoto' value='" . $row['photo_id'] . "'/>";
