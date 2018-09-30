@@ -49,18 +49,27 @@
 				
 	$result = mysqli_query($conn,$sql) or die(mysqli_error($conn));
 
+	$theCurrentDay = '0';
+	echo "<table cellpadding='3'>";
 	while($row = mysqli_fetch_array($result)){
-		echo "<li>";
-	 echo $row['filename'];
-	 echo ' - ' . $row['first_name'];
-	 echo ' - ' . $row['photo_long'];
-	 echo ' - ' . $row['last_name'];
-	 echo ' - ' . $row['day'];
-	 echo " - <img src='/creation/sent-images/" . $row['filename'] . "' width='200'/>";
-			 echo "\n";
-		
+		echo "<tr valign='top'>";
+		// echo $row['filename'];
+		if ($row['day'] != $theCurrentDay) {
+			echo '<td>' . $row['day'] . "</td>\n";
+			echo '<td>' . $row['photo_long'] . "</td>\n";
+			$theCurrentDay = $row['day'];
+		}
+		else {
+			echo '<td></td><td></td>' . "\n";
+		}
+		echo '<td>' . $row['first_name'];
+			echo ' ' . $row['last_name'] . "</td>\n";
+		echo "<td><img src='/creation/sent-images/" . $row['filename'] . "' width='200'/></td>";
+		echo "</tr>";
+		echo "\n";
 	}
-
+	echo "</table>\n";
+	
 	dbClose($conn);
 
 ?>
