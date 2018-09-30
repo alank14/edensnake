@@ -159,33 +159,42 @@ function base64_to_jpeg($base64_string, $output_file) {
     return $output_file; 
 }
 
+$photoReceived = 1;
 if (isset($_POST['base64'])) {
 	$theBase64 = $_POST['base64'];
+}
+else {
+	$photoReceived = 0;
 }
 
 if (isset($_POST['creationDay'])) {
 	$theCreationDay = $_POST['creationDay'];
 }
+else {
+	$photoReceived = 0;
+}
 
-$theUser = $currentUserID;
+if ($photoReceived) {
+	$theUser = $currentUserID;
 
-date_default_timezone_set("America/Los_Angeles");
+	date_default_timezone_set("America/Los_Angeles");
 
-$time = time(); 
+	$time = time(); 
 
-$datestamp =  date("Y-m-d_H-i-s", $time);
+	$datestamp =  date("Y-m-d_H-i-s", $time);
 
-$filebase = "/creation/sent-images/${theUser}_${theCreationDay}_$datestamp.jpg";
-$filepath = "/var/www/edensnake" . $filebase;
+	$filebase = "/creation/sent-images/${theUser}_${theCreationDay}_$datestamp.jpg";
+	$filepath = "/var/www/edensnake" . $filebase;
 
-// Save the image in a defined path
-base64_to_jpeg($theBase64,$filepath);
+	// Save the image in a defined path
+	base64_to_jpeg($theBase64,$filepath);
 
-echo '<h3>FYI: File Saved: <a target="_new" href="https://edensnake.com' . $filebase . '">see photo just taken</a></h3>' . "\n";
-// echo '<img src="https://edensnake.com' . $filebase . '"/>' . "\n";
+	echo '<h3>FYI: File Saved: <a target="_new" href="https://edensnake.com' . $filebase . '">see photo just taken</a></h3>' . "\n";
+	// echo '<img src="https://edensnake.com' . $filebase . '"/>' . "\n";
 
-// todo: could make feedback message here that says PHOTO WAS SAVED. 
-$feedbackMessage = "Photo received. Thank you!";
+	// todo: could make feedback message here that says PHOTO WAS SAVED. 
+	$feedbackMessage = "Photo received. Thank you!";
+}
 
 
 dbClose($conn);
