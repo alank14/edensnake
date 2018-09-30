@@ -140,17 +140,23 @@
 		echo "</td>\n";
 
 		echo "<td>";
-		echo "<form method='get' action='./approve-photos.php'>\n";
-		echo "<input type='hidden' name='approvePhoto' value='" . $row['photo_id'] . "'/>";
-		echo "<input type='submit' value='approve'/>";
-		echo "</form>\n";
+		if ($row['approved'] != '1') {
+			echo "<form method='get' action='./approve-photos.php'>\n";
+			echo "<input type='hidden' name='approveStatus' value='" . $theApproveStatus . "'/>";
+			echo "<input type='hidden' name='approvePhoto' value='" . $row['photo_id'] . "'/>";
+			echo "<input type='submit' value='approve'/>";
+			echo "</form>\n";
+		}
 		echo "</td>";
 
 		echo "<td>";
-		echo "<form method='get' action='./approve-photos.php'>\n";
-		echo "<input type='hidden' name='rejectPhoto' value='" . $row['photo_id'] . "'/>";
-		echo "<input type='submit' value='reject'/>";
-		echo "</form>\n";
+		if ($row['approved'] != '2') {
+			echo "<form method='get' action='./approve-photos.php'>\n";
+			echo "<input type='hidden' name='approveStatus' value='" . $theApproveStatus . "'/>";
+			echo "<input type='hidden' name='rejectPhoto' value='" . $row['photo_id'] . "'/>";
+			echo "<input type='submit' value='reject'/>";
+			echo "</form>\n";
+		}
 		echo "</td>";
 
 		echo "</tr>";
