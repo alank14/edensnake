@@ -99,10 +99,6 @@ if (isset($_GET['rqkey'])) {
 	$prior_rday = $riddleQuestionKeyArray[$rqkey];
 }
 
-// todo - only initialize this at START -- then just reset ONCE PHOTO HAS BEEN SUBMITTED
-// on receiving of GET variable for that photo, then you can reset it.
-// $riddleJustAnsweredCorrectly = '';
-
 // Check if an answer is submitted.
 if (isset($_GET['ranswer']) && ($userRiddleArray[$currentUserID][$prior_rday] != $prior_rday)) {
 	// user is submitting the answer to a question they did not get right before
@@ -183,13 +179,26 @@ if ($photoReceived) {
 
 	$datestamp =  date("Y-m-d_H-i-s", $time);
 
-	$filebase = "/creation/sent-images/${theUser}_${theCreationDay}_$datestamp.jpg";
+	$filename = "${theUser}_${theCreationDay}_$datestamp.jpg";
+	$filebase = "/creation/sent-images/${filename}";
 	$filepath = "/var/www/edensnake" . $filebase;
 
 	// Save the image in a defined path
 	base64_to_jpeg($theBase64,$filepath);
 	
 	// todo: save metadata to database
+	$sql = "UPDATE user_riddles SET photo_" . $theCreationDay . "=1 WHERE user_id = $theUser;";
+	echo "<h1>HERE: [[$sql]]</h1>\n";
+
+	$sql2 = "UPDATE photos SET active=0 WHERE day='" . $theCreationDay . "' AND user_id = $theUser;";
+	echo "<h1>HERE2: [[$sql2]]</h1>\n";
+
+	$sql3 = "INSERT INTO photos (filename,day,user,active) VALUES ('$filenname','$theCreationDay','$theUser','1');";
+	echo "<h1>HERE3: [[$sql3]]</h1>\n";
+
+	// $result = mysqli_query($conn,$sql) or die(mysqli_error($conn));
+
+
 
 	// debug
 	// echo '<h3>FYI: File Saved: <a target="_new" href="https://edensnake.com' . $filebase . '">see photo just taken</a></h3>' . "\n";
