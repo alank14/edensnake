@@ -42,6 +42,8 @@
 				;";
 	
 	
+echo "<pre>$sql</pre>\n";
+				
 	$result = mysqli_query($conn,$sql) or die(mysqli_error($conn));
 
 	while($row = mysqli_fetch_array($result)){
