@@ -99,9 +99,9 @@ if (isset($_GET['rqkey'])) {
 	$prior_rday = $riddleQuestionKeyArray[$rqkey];
 }
 
-// no - only initialize this at START -- then just reset ONCE PHOTO HAS BEEN SUBMITTED
+// todo - only initialize this at START -- then just reset ONCE PHOTO HAS BEEN SUBMITTED
 // on receiving of GET variable for that photo, then you can reset it.
-$riddleJustAnsweredCorrectly = '';
+// $riddleJustAnsweredCorrectly = '';
 
 // Check if an answer is submitted.
 if (isset($_GET['ranswer']) && ($userRiddleArray[$currentUserID][$prior_rday] != $prior_rday)) {
@@ -132,7 +132,7 @@ if (isset($_GET['ranswer']) && ($userRiddleArray[$currentUserID][$prior_rday] !=
 				}
 			}
 			updateNewDay($currentUserID,$rday);
-			$feedbackMessage = "CORRECT! Next riddle:";
+			$feedbackMessage = "CORRECT!";
 		}
 	}
 	else {
@@ -188,12 +188,16 @@ if ($photoReceived) {
 
 	// Save the image in a defined path
 	base64_to_jpeg($theBase64,$filepath);
+	
+	// todo: save metadata to database
 
-	echo '<h3>FYI: File Saved: <a target="_new" href="https://edensnake.com' . $filebase . '">see photo just taken</a></h3>' . "\n";
+	// debug
+	// echo '<h3>FYI: File Saved: <a target="_new" href="https://edensnake.com' . $filebase . '">see photo just taken</a></h3>' . "\n";
+
 	// echo '<img src="https://edensnake.com' . $filebase . '"/>' . "\n";
 
-	// todo: could make feedback message here that says PHOTO WAS SAVED. 
 	$feedbackMessage = "Photo received. Thank you!";
+	$riddleJustAnsweredCorrectly = '';
 }
 
 
