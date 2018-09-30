@@ -109,6 +109,7 @@
 	echo " | <a href='./approve-photos.php?approveStatus=all'>All</a>";
 	echo "</h3>";
 	
+	$rowCount = '0';
 	echo "<table cellpadding='3'>";
 	while($row = mysqli_fetch_array($result)){
 		echo "<tr valign='top'>";
@@ -154,8 +155,13 @@
 
 		echo "</tr>";
 		echo "\n";
+		$rowCount++;
 	}
 	echo "</table>\n";
+	
+	if ($rowCount == '0') {
+		echo "<h3>No results for this particular report.</h3>\n";
+	}
 	
 	dbClose($conn);
 
