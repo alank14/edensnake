@@ -77,128 +77,130 @@ echo '	</div>';
 		echo '<h3><a class="picLink" href="photo-index.php?creationDay=' . $riddleJustAnsweredCorrectly . '">Go take this photo: somebody ' . $riddleArray[$riddleJustAnsweredCorrectly]["photo_long"]	. '</a></h3>' . "\n";		
 	}
 
-	
-	// answer form
-	echo '<form method="get" action="./riddle.php" id="answerForm">' . "\n";
+	else {
+		// answer form
+		echo '<form method="get" action="./riddle.php" id="answerForm">' . "\n";
 
-	echo "<script>\n";
-	// write out javascript array here with all the B-Tag values and their English equivalents
-	echo "var \$answerWords = [];\n";
-	foreach ($falseAnswerArray as $theFalseAnswer) {
-		echo "$" . "answerWords['" . $theFalseAnswer["riddle_answer_key"] . "'] = " . '"' . $theFalseAnswer["riddle_answer"] . '";' . "\n";
-	}
-	foreach ($riddleArray as $theRealAnswer) {
-		echo "$" . "answerWords['" . $theRealAnswer["riddle_answer_key"] . "'] = " . '"' . $theRealAnswer["riddle_answer"] . '";' . "\n";
-	}
-		echo "\tfunction parseMe($" . "theValue) {\n";
-		// echo "\n\t\$enteredText = document.getElementById('firstNameField').value;\n";
-		echo "if (typeof \$answerWords[\$theValue] === 'undefined') {\n";
-			// reset the span to BLANK!
-			echo "\t\t" . 'document.getElementById("wordsForBTag").innerHTML = "&nbsp;";' . "\n";
-			echo "}\n";
-			echo "else {\n";
-			// set that span to the helpful-feedback words
-			echo "\t\t" . 'document.getElementById("wordsForBTag").innerHTML = $answerWords[$theValue];' . "\n";
-			echo "\t}\n";
-		echo "}\n";
-		
-		// Hint Display Javascript
-		
-		echo 'function showHideHint() {' . "\n";
-		    echo 'var x = document.getElementById("myHINT");' . "\n";
-		    echo 'if ((x.style.display == "none") || (x.style.display == "")) {' . "\n";
-		        echo 'x.style.display = "block";' . "\n";
-				echo 'document.getElementById("showHideHintButton").value = "hide hint";' . "\n";
-		    echo '} else {' . "\n";
-		        echo 'x.style.display = "none";' . "\n";
-				echo 'document.getElementById("showHideHintButton").value = "show hint";' . "\n";
-		    echo '}' . "\n";
-		echo '}' . "\n";
-		
-		
-		
-	echo "</script>\n";
-	
-	if ($answersCorrect != 7) {
-		// current riddle
-		echo '<p class="instructions">Find the B-Tag that solves this riddle:</p>';
-		echo '<div id="clue_div">' . $riddleArray[$rday]["riddle"] . "</div>\n";
-	
-		echo '<p class="instructions">Scan the QR-Code, or type in the three digits:</p>';
-		echo "<div class='btag'>B-Tag Number: ";
-			echo '<input onkeyup=' . "parseMe(document.getElementById(\"cam-qr-result\").value);" . ' id="cam-qr-result" name="ranswer" type="tel" size="4" minlength="3" maxlength="3" class="btag"/>' . "\n";
-			echo ' <div id="wordsForBTag">&nbsp;</div>';
-		echo '</div>';
-		echo '<p class="instructions">Then click the Day of Creation at right!</p>';
-	}
-	?>
-
-	<!-- webcam -->
-	<div class="cam">
-	    <video style="width:180px;height=180px;" muted autoplay playsinline id="qr-video"></video>
-	    <canvas id="debug-canvas"></canvas>
-	</div>
-
-
-<!--
-<div class="pngcontainer1">
-  <img src="sample-photos/sample-1.png" width="180" height="180"/>
-  <img src="crosshair.png" width="180" height="180"/>
-</div>
--->
-
-
-<input id="showHideHintButton" type="button" onclick="showHideHint()" value="Show Hint"/>
-
-
-	<?php
-	echo '<div id="myHINT" style="display:none;">' . "\n";
-
-	if ($answersCorrect != 7) {
-		// hints for current clue
-			echo '<div id="clue_hints_div">' . "\n";
-			echo "<p class='hint_english'><i>" . '"' . $riddleArray[$rday]["quote_english"] . '"' . "</i></p>";
-			echo "<p class='hint_hebrew'>" . $riddleArray[$rday]["quote_hebrew"] . "</p>";
-			echo '</div>' . "\n";
+		echo "<script>\n";
+		// write out javascript array here with all the B-Tag values and their English equivalents
+		echo "var \$answerWords = [];\n";
+		foreach ($falseAnswerArray as $theFalseAnswer) {
+			echo "$" . "answerWords['" . $theFalseAnswer["riddle_answer_key"] . "'] = " . '"' . $theFalseAnswer["riddle_answer"] . '";' . "\n";
 		}
+		foreach ($riddleArray as $theRealAnswer) {
+			echo "$" . "answerWords['" . $theRealAnswer["riddle_answer_key"] . "'] = " . '"' . $theRealAnswer["riddle_answer"] . '";' . "\n";
+		}
+			echo "\tfunction parseMe($" . "theValue) {\n";
+			// echo "\n\t\$enteredText = document.getElementById('firstNameField').value;\n";
+			echo "if (typeof \$answerWords[\$theValue] === 'undefined') {\n";
+				// reset the span to BLANK!
+				echo "\t\t" . 'document.getElementById("wordsForBTag").innerHTML = "&nbsp;";' . "\n";
+				echo "}\n";
+				echo "else {\n";
+				// set that span to the helpful-feedback words
+				echo "\t\t" . 'document.getElementById("wordsForBTag").innerHTML = $answerWords[$theValue];' . "\n";
+				echo "\t}\n";
+			echo "}\n";
+		
+			// Hint Display Javascript
+		
+			echo 'function showHideHint() {' . "\n";
+			    echo 'var x = document.getElementById("myHINT");' . "\n";
+			    echo 'if ((x.style.display == "none") || (x.style.display == "")) {' . "\n";
+			        echo 'x.style.display = "block";' . "\n";
+					echo 'document.getElementById("showHideHintButton").value = "hide hint";' . "\n";
+			    echo '} else {' . "\n";
+			        echo 'x.style.display = "none";' . "\n";
+					echo 'document.getElementById("showHideHintButton").value = "show hint";' . "\n";
+			    echo '}' . "\n";
+			echo '}' . "\n";
+		
+		
+		
+		echo "</script>\n";
+	
+		if ($answersCorrect != 7) {
+			// current riddle
+			echo '<p class="instructions">Find the B-Tag that solves this riddle:</p>';
+			echo '<div id="clue_div">' . $riddleArray[$rday]["riddle"] . "</div>\n";
+	
+			echo '<p class="instructions">Scan the QR-Code, or type in the three digits:</p>';
+			echo "<div class='btag'>B-Tag Number: ";
+				echo '<input onkeyup=' . "parseMe(document.getElementById(\"cam-qr-result\").value);" . ' id="cam-qr-result" name="ranswer" type="tel" size="4" minlength="3" maxlength="3" class="btag"/>' . "\n";
+				echo ' <div id="wordsForBTag">&nbsp;</div>';
+			echo '</div>';
+			echo '<p class="instructions">Then click the Day of Creation at right!</p>';
+		}
+		?>
 
-	echo '</div>' . "\n";
+		<!-- webcam -->
+		<div class="cam">
+		    <video style="width:180px;height=180px;" muted autoplay playsinline id="qr-video"></video>
+		    <canvas id="debug-canvas"></canvas>
+		</div>
+
+
+	<!--
+	<div class="pngcontainer1">
+	  <img src="sample-photos/sample-1.png" width="180" height="180"/>
+	  <img src="crosshair.png" width="180" height="180"/>
+	</div>
+	-->
+
+
+	<input id="showHideHintButton" type="button" onclick="showHideHint()" value="Show Hint"/>
+
+
+		<?php
+		echo '<div id="myHINT" style="display:none;">' . "\n";
+
+		if ($answersCorrect != 7) {
+			// hints for current clue
+				echo '<div id="clue_hints_div">' . "\n";
+				echo "<p class='hint_english'><i>" . '"' . $riddleArray[$rday]["quote_english"] . '"' . "</i></p>";
+				echo "<p class='hint_hebrew'>" . $riddleArray[$rday]["quote_hebrew"] . "</p>";
+				echo '</div>' . "\n";
+			}
+
+		echo '</div>' . "\n";
 
 
 	
-	echo '</div>' . "\n"; // end cbody-left
+		echo '</div>' . "\n"; // end cbody-left
 	
 		
-	echo '<div class="cbody-right">';
+		echo '<div class="cbody-right">';
 
-					// puzzle-piece table
-					echo '<table xid="puzzle_pieces" cellspacing="0" cellpadding="0" xborder="border">' . "\n";
-						echo "<tr>\n";
-						echo "<th colspan='2' class='pieceHeader'>Select Day</th>\n";
-						echo "</tr>\n";
-						for ($i=1; $i<=7; $i++) {
+						// puzzle-piece table
+						echo '<table xid="puzzle_pieces" cellspacing="0" cellpadding="0" xborder="border">' . "\n";
 							echo "<tr>\n";
-							echo "<th class='daycell'>$i</th>\n";
-							if ($userRiddleArray[$currentUserID][$i] == $riddleArray[$i]["day"]) {
-								echo "<td class='snakePieceCell'>";
-								echo "<img style='display:block;' src='snake-pieces/snake-$i.png' width='90' height='60'/>";
-								echo "</td>\n";
-							}
-							else {
-								echo "<td class='dayRadioCell'>";
-								echo "<input xclass='dayRadio' type='radio' name='rqkey' value='" . $riddleArray[$i]["riddle_question_key"];
-								echo "' onclick='document.getElementById(\"answerForm\").submit();'/>";
-								echo "</td>\n";
-							}
+							echo "<th colspan='2' class='pieceHeader'>Select Day</th>\n";
 							echo "</tr>\n";
-						}
-					echo "</table>\n";
+							for ($i=1; $i<=7; $i++) {
+								echo "<tr>\n";
+								echo "<th class='daycell'>$i</th>\n";
+								if ($userRiddleArray[$currentUserID][$i] == $riddleArray[$i]["day"]) {
+									echo "<td class='snakePieceCell'>";
+									echo "<img style='display:block;' src='snake-pieces/snake-$i.png' width='90' height='60'/>";
+									echo "</td>\n";
+								}
+								else {
+									echo "<td class='dayRadioCell'>";
+									echo "<input xclass='dayRadio' type='radio' name='rqkey' value='" . $riddleArray[$i]["riddle_question_key"];
+									echo "' onclick='document.getElementById(\"answerForm\").submit();'/>";
+									echo "</td>\n";
+								}
+								echo "</tr>\n";
+							}
+						echo "</table>\n";
 	
 	
-	echo "</div>\n";
+		echo "</div>\n";
 
-	echo "</form>\n";
+		echo "</form>\n";
 	
+		
+	}
 
 
 
