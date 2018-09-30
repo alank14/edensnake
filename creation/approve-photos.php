@@ -17,7 +17,7 @@
 	echo '</head><body>' . "\n";
 
 
-	echo '<h1>The Photos Approval Dashboard ("The PAD")</h1>' . "\n";
+	echo '<h1>The Photo Approval Dashboard ("The PAD")</h1>' . "\n";
 
 
 
