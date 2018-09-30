@@ -184,6 +184,9 @@ base64_to_jpeg($theBase64,$filepath);
 echo '<h3>FYI: File Saved: <a target="_new" href="https://edensnake.com' . $filebase . '">see photo just taken</a></h3>' . "\n";
 // echo '<img src="https://edensnake.com' . $filebase . '"/>' . "\n";
 
+// todo: could make feedback message here that says PHOTO WAS SAVED. 
+$feedbackMessage = "Photo received. Thank you!";
+
 
 dbClose($conn);
 ?>
