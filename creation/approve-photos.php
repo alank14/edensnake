@@ -25,6 +25,7 @@
 	
 	$photoToApprove = '';
 	$photoToReject = '';
+	$sql = '';
 	
 	if (isset($_GET['approvePhoto'])) {
 		$photoToApprove = $_GET['approvePhoto'];
@@ -39,9 +40,11 @@
 	if ($photoToReject != '') {
 		$sql = 'UPDATE photos SET approved="2" WHERE id="' . $photoToReject . '";';
 	}
-//	echo "<h3>DEBUG: " . $sql . "</h3>\n";
 	
-	$result = mysqli_query($conn,$sql) or die(mysqli_error($conn));
+	if ($sql != '') {
+		//	echo "<h3>DEBUG: " . $sql . "</h3>\n";
+		$result = mysqli_query($conn,$sql) or die(mysqli_error($conn));
+	}
 
 
 	if (isset($_GET['approveStatus'])) {
@@ -50,6 +53,7 @@
 	else {
 		$theApproveStatus = 'unapproved';
 	}
+	
 	
 	if ($theApproveStatus == 'approved') {
 		$sqlApproveFragment = "AND photos.approved = '1'";
