@@ -251,3 +251,7 @@ font-family: 'M PLUS Rounded 1c', sans-serif;
     float: none;
   }
 }
+
+.currentApprovalPage {
+	font-size: 18px;
+}
