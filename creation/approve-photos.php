@@ -28,13 +28,16 @@
 				, photos.day
 				, users.first_name
 				, users.last_name
+				, riddles.photo_long
 			FROM 
 				photos
 				, users
+				, riddles
 			WHERE
 				photos.active = '1'
 				AND photos.approved IS NULL
 				AND photos.user_id = users.id
+				AND riddles.day = photos.day
 			ORDER BY
 				photos.day asc
 				, users.last_name asc
@@ -50,9 +53,10 @@
 		echo "<li>";
 	 echo $row['filename'];
 	 echo ' - ' . $row['first_name'];
+	 echo ' - ' . $row['photo_long'];
 	 echo ' - ' . $row['last_name'];
 	 echo ' - ' . $row['day'];
-	 echo " - <img src='/creation/sent-images/" . $row['filename'] . "'/>";
+	 echo " - <img src='/creation/sent-images/" . $row['filename'] . "' width='200'/>";
 			 echo "\n";
 		
 	}
