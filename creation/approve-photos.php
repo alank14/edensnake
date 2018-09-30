@@ -22,6 +22,27 @@
 
 
 	$conn = dbOpen($sqlhost, $sqluser, $sqlpass, $sqldb);
+	
+	$photoToApprove = '';
+	$photoToReject = '';
+	
+	if (isset($_GET['approvePhoto'])) {
+		$photoToApprove = $_GET['approvePhoto'];
+	}
+	if (isset($_GET['rejectPhoto'])) {
+		$photoToReject = $_GET['rejectPhoto'];
+	}
+
+	if ($photoToApprove != '') {
+		$sql = 'UPDATE photos SET approved="1" WHERE id="' . $photoToApprove . '";';
+	}
+	if ($photoToReject != '') {
+		$sql = 'UPDATE photos SET approved="2" WHERE id="' . $photoToReject . '";';
+	}
+	echo "<h3>DEBUG: " . $sql . "</h3>\n";
+	
+	$result = mysqli_query($conn,$sql) or die(mysqli_error($conn));
+
 
 	$sql = "SELECT 
 				photos.filename
