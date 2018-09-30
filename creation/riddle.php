@@ -74,7 +74,7 @@ echo '	</div>';
 		// check if photo for $rday is missing. 
 		echo '<h3>We just took photo ' . $riddleJustAnsweredCorrectly . '.</h3>' . "\n";
 	
-		echo '<h3><a class="picLink" href="photo-index?creationDay=' . $riddleJustAnsweredCorrectly . '">Go take this photo: somebody ' . $riddleArray[$riddleJustAnsweredCorrectly]["photo_long"]	. '</a></h3>' . "\n";		
+		echo '<h3><a class="picLink" href="photo-index.php?creationDay=' . $riddleJustAnsweredCorrectly . '">Go take this photo: somebody ' . $riddleArray[$riddleJustAnsweredCorrectly]["photo_long"]	. '</a></h3>' . "\n";		
 	}
 
 	
