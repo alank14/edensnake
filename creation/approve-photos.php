@@ -33,7 +33,7 @@
 				, users
 			WHERE
 				photos.active = '1'
-				AND photos.approved != '1'
+				AND photos.approved IS NULL
 				AND photos.user_id = users.id
 			ORDER BY
 				photos.day asc
@@ -42,7 +42,7 @@
 				;";
 	
 	
-echo "<pre>$sql</pre>\n";
+				// echo "<pre>$sql</pre>\n";
 				
 	$result = mysqli_query($conn,$sql) or die(mysqli_error($conn));
 
