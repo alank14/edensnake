@@ -63,7 +63,7 @@
 	else if ($theApproveStatus == 'all') {
 		$sqlApproveFragment = "";
 	}
-	else
+	else {
 		$sqlApproveFragment = "AND photos.approved = '0'";
 	}
 
