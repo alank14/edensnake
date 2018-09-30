@@ -32,7 +32,7 @@
 				photos
 				, users
 			WHERE
-				photos.active == '1'
+				photos.active = '1'
 				AND photos.approved != '1'
 				AND photos.user_id = users.id
 			ORDER BY
