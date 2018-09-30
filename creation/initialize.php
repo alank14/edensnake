@@ -193,7 +193,7 @@ if ($photoReceived) {
 	$sql2 = "UPDATE photos SET active=0 WHERE day='" . $theCreationDay . "' AND user_id = $theUser;";
 	// echo "<h1>HERE2: [[$sql2]]</h1>\n";
 
-	$sql3 = "INSERT INTO photos (filename,day,user,active) VALUES ('$filename','$theCreationDay','$theUser','1');";
+	$sql3 = "INSERT INTO photos (filename,day,user_id,active) VALUES ('$filename','$theCreationDay','$theUser','1');";
 	// echo "<h1>HERE3: [[$sql3]]</h1>\n";
 
 	$result1 = mysqli_query($conn,$sql1) or die(mysqli_error($conn));
