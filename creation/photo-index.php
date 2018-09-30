@@ -67,7 +67,7 @@
   
 
 <?php
-	echo '<form method="POST" name="form" id="form" action="save.php">' . "\n";
+	echo '<form method="POST" name="form" id="form" action="riddle.php">' . "\n";
 	echo "\t" . '<input type="hidden" name="creationDay" value="' . $theCreationDay . '">' . "\n";
 	echo "\t" . '<textarea name="base64" id="base64"></textarea>' . "\n";
 	echo '</form>' . "\n";
