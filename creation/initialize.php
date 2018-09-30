@@ -121,7 +121,8 @@ if (isset($_GET['ranswer']) && ($userRiddleArray[$currentUserID][$prior_rday] !=
 
 		// if all answers are now correct, then MOVE ON!
 		if ($answersCorrect == 7) {
-			$feedbackMessage = 'Congratulations! All 7 are now correct!';
+			$feedbackMessage = 'CORRECT!';
+			$allRiddlesAreDone = 'TRUE';
 		}
 		// otherwise, move to a random unanswered question
 		else {
