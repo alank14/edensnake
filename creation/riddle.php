@@ -67,7 +67,22 @@ echo '	</div>';
 		echo '<h2 class="feedback">' . $feedbackMessage . '</h2>' . "\n";
 		
 	}
-
+	// checks to see if puzzle is done:
+		$allRiddlesAreDone = 'FALSE';
+		if (
+			($userRiddleArray[$currentUserID][1] == '1')
+			&& ($userRiddleArray[$currentUserID][2] == '2')
+			&& ($userRiddleArray[$currentUserID][3] == '3')
+			&& ($userRiddleArray[$currentUserID][4] == '4')
+			&& ($userRiddleArray[$currentUserID][5] == '5')
+			&& ($userRiddleArray[$currentUserID][6] == '6')
+			&& ($userRiddleArray[$currentUserID][7] == '7')
+			) {
+				$allRiddlesAreDone = 'TRUE';
+			}
+		
+		
+		
 	// must make this work on refresh also!!
 	if ($riddleJustAnsweredCorrectly != '') {
 		// check to see if user is missing any photos. 
@@ -77,7 +92,7 @@ echo '	</div>';
 	
 		echo '<h3><a class="picLink" href="photo-index.php?creationDay=' . $riddleJustAnsweredCorrectly . '">Click here to take a photo of: somebody ' . $riddleArray[$riddleJustAnsweredCorrectly]["photo_long"]	. '</a></h3>' . "\n";		
 	}
-	else if ($userRiddleArray[$currentUserID]["next_day"] == $riddleJustAnsweredCorrectly) {
+	else if ($allRiddlesAreDone == 'TRUE') {
 		// if all are correct...
 		echo "<h2>You are done! Stand by to wait for QUIZ.</h2>\n";
 	}
