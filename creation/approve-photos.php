@@ -110,7 +110,8 @@
 	echo "</h3>";
 	
 	$rowCount = '0';
-	echo "<table cellpadding='3'>";
+	echo "<table cellpadding='3' width='100%'>";
+	echo "<tr bgcolor='#cccccc'><th>Day</th><th>Photo Assignment</th><th>User</th><th>Photo</th><th>Current<br/>Status</th><th>Approve?</th><th>Reject?</th></tr>";
 	while($row = mysqli_fetch_array($result)){
 		echo "<tr valign='top'>";
 		// echo $row['filename'];
