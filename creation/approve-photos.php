@@ -52,7 +52,7 @@
 	 echo ' - ' . $row['first_name'];
 	 echo ' - ' . $row['last_name'];
 	 echo ' - ' . $row['day'];
-	 echo " - <img src='/creation/sennt-images/" . $row['filename'] . "'/>";
+	 echo " - <img src='/creation/sent-images/" . $row['filename'] . "'/>";
 			 echo "\n";
 		
 	}
