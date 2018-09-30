@@ -14,7 +14,7 @@
 	echo '<link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">' . "\n";
 	echo '<link rel="stylesheet" href="edensnake.css">' . "\n";
 	echo '<link rel="icon" type="image/png" href="resources/favicon.png">' . "\n";
-	echo '</head><body><h1>Approve Photos</h1>' . "\n";
+	echo '</head><body>' . "\n";
 
 
 	echo '<h1>Unapproved Photos</h1>' . "\n";
@@ -25,6 +25,7 @@
 
 	$sql = "SELECT 
 				photos.filename
+				, photos.id AS photo_id
 				, photos.day
 				, users.first_name
 				, users.last_name
@@ -36,6 +37,7 @@
 			WHERE
 				photos.active = '1'
 				AND photos.approved IS NULL
+				AND photos.approved <> "-1"
 				AND photos.user_id = users.id
 				AND riddles.day = photos.day
 			ORDER BY
@@ -50,6 +52,7 @@
 	$result = mysqli_query($conn,$sql) or die(mysqli_error($conn));
 
 	$theCurrentDay = '0';
+	
 	echo "<table cellpadding='3'>";
 	while($row = mysqli_fetch_array($result)){
 		echo "<tr valign='top'>";
@@ -65,6 +68,20 @@
 		echo '<td>' . $row['first_name'];
 			echo ' ' . $row['last_name'] . "</td>\n";
 		echo "<td><img src='/creation/sent-images/" . $row['filename'] . "' width='200'/></td>";
+		echo "<td>";
+		echo "<form method='get' action='./approve-photos.php'>\n";
+		echo "<input type='hidden' name='approvePhoto' value='" . $row['photo_id'] . "'/>";
+		echo "<input type='submit' name='approve'/>";
+		echo "</form>\n";
+		echo "</td>";
+
+		echo "<td>";
+		echo "<form method='get' action='./approve-photos.php'>\n";
+		echo "<input type='hidden' name='rejectPhoto' value='" . $row['photo_id'] . "'/>";
+		echo "<input type='submit' name='reject'/>";
+		echo "</form>\n";
+		echo "</td>";
+
 		echo "</tr>";
 		echo "\n";
 	}
