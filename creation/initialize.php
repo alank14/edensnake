@@ -39,7 +39,7 @@ while($row = mysqli_fetch_array($result)){
 }
 
 // populate $riddleArray
-$sql = "SELECT day, riddle, riddle_question_key, riddle_answer_key, riddle_answer, quote_english, quote_hebrew, qr_style FROM riddles;";
+$sql = "SELECT day, riddle, riddle_question_key, riddle_answer_key, riddle_answer, quote_english, quote_hebrew, qr_style, photo_long FROM riddles;";
 $result = mysqli_query($conn,$sql) or die(mysqli_error($conn));
 while($row = mysqli_fetch_array($result)){
 	$riddleArray[$row['day']]["day"] = $row['day'];
@@ -50,6 +50,7 @@ while($row = mysqli_fetch_array($result)){
 	$riddleArray[$row['day']]["quote_english"] = $row['quote_english'];
 	$riddleArray[$row['day']]["quote_hebrew"] = $row['quote_hebrew'];
 	$riddleArray[$row['day']]["qr_style"] = $row['qr_style'];
+	$riddleArray[$row['day']]["photo_long"] = $row['photo_long'];
 
 	$riddleQuestionKeyArray[$row['riddle_question_key']] = $row['day'];
 }
@@ -98,6 +99,10 @@ if (isset($_GET['rqkey'])) {
 	$prior_rday = $riddleQuestionKeyArray[$rqkey];
 }
 
+// no - only initialize this at START -- then just reset ONCE PHOTO HAS BEEN SUBMITTED
+// on receiving of GET variable for that photo, then you can reset it.
+$riddleJustAnsweredCorrectly = '';
+
 // Check if an answer is submitted.
 if (isset($_GET['ranswer']) && ($userRiddleArray[$currentUserID][$prior_rday] != $prior_rday)) {
 	// user is submitting the answer to a question they did not get right before
@@ -111,6 +116,8 @@ if (isset($_GET['ranswer']) && ($userRiddleArray[$currentUserID][$prior_rday] !=
 		
 		// update the array
 		$userRiddleArray[$currentUserID][$rday] = $rday;
+		
+		$riddleJustAnsweredCorrectly = $rday;
 
 		// if all answers are now correct, then MOVE ON!
 		if ($answersCorrect == 7) {

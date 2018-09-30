@@ -7,6 +7,42 @@
   <meta name="author" content="Kasper Kamperman">
   <title>EdenSnake Photo</title>
   <link rel="stylesheet" type="text/css" href="style.css">
+  <?php
+  	
+	include 'pix-header.php';
+
+	if (isset($_GET['creationDay'])) {
+		$theCreationDay = $_GET['creationDay'];
+	}
+	else {
+		$theCreationDay = '5';
+	}
+
+	switch ($theCreationDay) {
+	    case 1:
+	        $theCreationPhotoRequest = "someone<br/>wearing black<br/>and white";
+	        break;
+	    case 2:
+			$theCreationPhotoRequest = "someone<br/>holding<br/>a drink";
+	        break;
+	    case 3:
+			$theCreationPhotoRequest = "someone<br/>holding<br/>seating placecard";
+	        break;
+	    case 4:
+			$theCreationPhotoRequest = "someone<br/>smiling<br/>as bright as<br/>the sun";
+	        break;
+	    case 5:
+			$theCreationPhotoRequest = "someone<br/>flapping<br/>wings<br/>like a bird";
+	        break;
+	    case 6:
+			$theCreationPhotoRequest = "someone<br/>posing with you<br/>for a Selfie";
+	        break;
+	    case 7:
+			$theCreationPhotoRequest = "someone<br/>resting";
+	        break;
+	}
+	
+  ?>
 </head>
 <body>
   <div id="container">
@@ -16,7 +52,7 @@
     </div>
     <div id="gui_controls">
 		<div class="photoQuestion">
-			<p>someone<br/>wearing black<br/>and white</p>
+			<p><?php echo $theCreationPhotoRequest;?></p>
 		</div>
         <button id="switchCameraButton" name="switch Camera" type="button" aria-pressed="false"></button>
         <button id="takePhotoButton" name="take Photo" type="button"></button>
@@ -31,15 +67,6 @@
   
 
 <?php
-	include 'pix-header.php';
-
-	if (isset($_GET['creationDay'])) {
-		$theCreationDay = $_GET['creationDay'];
-	}
-	else {
-		$theCreationDay = '5';
-	}
-
 	echo '<form method="POST" name="form" id="form" action="save.php">' . "\n";
 	echo "\t" . '<input type="hidden" name="creationDay" value="' . $theCreationDay . '">' . "\n";
 	echo "\t" . '<textarea name="base64" id="base64"></textarea>' . "\n";

@@ -65,7 +65,18 @@ echo '	</div>';
 	// feedback message, if any
 	if ($feedbackMessage != '') {
 		echo '<h2 class="feedback">' . $feedbackMessage . '</h2>' . "\n";
+		
 	}
+
+	// must make this work on refresh also!!
+	if ($riddleJustAnsweredCorrectly != '') {
+		// check to see if user is missing any photos. 
+		// check if photo for $rday is missing. 
+		echo '<h3>We just took photo ' . $riddleJustAnsweredCorrectly . '.</h3>' . "\n";
+	
+		echo '<h3><a class="picLink" href="photo-index?creationDay=' . $riddleJustAnsweredCorrectly . '">Go take this photo: somebody ' . $riddleArray[$riddleJustAnsweredCorrectly]["photo_long"]	. '</a></h3>' . "\n";		
+	}
+
 	
 	// answer form
 	echo '<form method="get" action="./riddle.php" id="answerForm">' . "\n";
