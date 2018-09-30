@@ -95,7 +95,7 @@
 				;";
 	
 	
-			echo "<pre>$sql</pre>\n";
+			// echo "<pre>$sql</pre>\n";
 				
 	$result = mysqli_query($conn,$sql) or die(mysqli_error($conn));
 
@@ -134,7 +134,7 @@
 			echo "approved";
 		}
 		else if ($row['approved'] == '2') {
-			echo "unapproved";
+			echo "rejected";
 		}
 		echo "</td>\n";
 
