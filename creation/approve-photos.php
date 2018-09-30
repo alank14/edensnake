@@ -1,5 +1,5 @@
 <?php
-
+// https://edensnake.com/creation/approve-photos.php
 
 	header('Content-Type: text/html; charset=utf-8');
 	include('config.php');
@@ -17,16 +17,41 @@
 	echo '</head><body><h1>Approve Photos</h1>' . "\n";
 
 
+	echo '<h1>Unapproved Photos</h1>' . "\n";
+
+
 
 	$conn = dbOpen($sqlhost, $sqluser, $sqlpass, $sqldb);
 
-	$sql = "SELECT * FROM photos;";
+	$sql = "SELECT 
+				photos.filename
+				, photos.day
+				, users.first_name
+				, users.last_name
+			FROM 
+				photos
+				, users
+			WHERE
+				photos.active == '1'
+				AND photos.approved != '1'
+				AND photos.user_id = users.id
+			ORDER BY
+				photos.day asc
+				, users.last_name asc
+				, users.first_name asc
+				;";
 	
 	
 	$result = mysqli_query($conn,$sql) or die(mysqli_error($conn));
 
 	while($row = mysqli_fetch_array($result)){
-		echo "<li>" . $row['filename'] . "\n";
+		echo "<li>";
+	 echo $row['filename'];
+	 echo ' - ' . $row['first_name'];
+	 echo ' - ' . $row['last_name'];
+	 echo ' - ' . $row['day'];
+	 echo " - <img src='/creation/sennt-images/" . $row['filename'] . "'/>";
+			 echo "\n";
 		
 	}
 
