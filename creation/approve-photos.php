@@ -91,7 +91,7 @@
 				;";
 	
 	
-			//	echo "<pre>$sql</pre>\n";
+			echo "<pre>$sql</pre>\n";
 				
 	$result = mysqli_query($conn,$sql) or die(mysqli_error($conn));
 
