@@ -115,7 +115,7 @@
 		// echo $row['filename'];
 		if ($row['day'] != $theCurrentDay) {
 			echo '<td>' . $row['day'] . "</td>\n";
-			echo '<td>' . $row['photo_long'] . "</td>\n";
+			echo '<td><b>' . $row['photo_long'] . "</b></td>\n";
 			$theCurrentDay = $row['day'];
 		}
 		else {
