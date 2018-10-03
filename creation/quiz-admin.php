@@ -123,6 +123,10 @@
 	
 	<h2><a href="./quiz-admin.php?wipeUserAnswers=TRUE">Wipe All User Answers</a></h2>
 	
+	<h2><a href="./quiz.php">Quiz Broadcast Screen</a></h2>
+
+	<h2><a href="./quiz-client.php">Quiz Client Screen</a></h2>
+	
 	<?php
 	
 	dbClose($conn);
