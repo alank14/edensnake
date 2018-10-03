@@ -185,7 +185,6 @@
 
 	else if (($theState == 'question') && ($answerSubmissionState == "already_submitted")) {
 		$theContents.= "<h3>Results are coming soon!</h3>";
-		$theContents.= "<h3><a href='./quiz-client.php'>Click to refresh this page, cleanly.</a></h3>";
 	}
 
 	else if ($theState == 'results') {
@@ -210,7 +209,8 @@
 	else if ($theState == 'pause') {
 		$theContents.= "<h3>Quiz is in PAUSE mode!</h3>";
 	}
-	
+	$theContents.= "<h3><a href='./quiz-client.php'>Click to refresh this page, cleanly.</a></h3>";
+
 	echo "<div id='question_or_results'>\n";
 	
 
