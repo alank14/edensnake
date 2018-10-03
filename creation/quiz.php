@@ -117,11 +117,12 @@
 		echo "<h1>Here is current state: $theQuizAdminCurrentQuestionNumber and $theQuizAdminCurrentQuestionState</h1>\n";
 	}
 	
-	$sql_update_state = "UPDATE quiz_admin SET quiz_question_id = " . ($theQuizAdminCurrentQuestionNumber + 1) . ", quiz_question_state = '";
 	if ($theQuizAdminCurrentQuestionState == 'question') {
+		$sql_update_state = "UPDATE quiz_admin SET quiz_question_id = " . ($theQuizAdminCurrentQuestionNumber) . ", quiz_question_state = '";
 		$sql_update_state .= 'results';
 	}
 	else {
+		$sql_update_state = "UPDATE quiz_admin SET quiz_question_id = " . ($theQuizAdminCurrentQuestionNumber + 1) . ", quiz_question_state = '";
 		$sql_update_state .= 'question';
 	}
 	$sql_update_state .= "';";
