@@ -4,11 +4,16 @@
   <title>Quiz - Client</title>
   <xlink rel="stylesheet" type="text/css" href="style.css">
 	  <style>
-		  .optionlist td {
+		  .optionlistQUESTION td {
 			  height: 100px;
 			  text-align: center;
 			  font-weight: bold;
 			  cursor: pointer;
+		  }
+		  .optionlistRESULTS td {
+			  height: 100px;
+			  text-align: center;
+			  font-weight: bold;
 		  }
 		  .option_a {
 			  background: yellow;
@@ -165,7 +170,7 @@
 	
 		$theContents.= "<div id='answerSpace'>";
 	
-		$theContents.= "<table class='optionlist' cellpadding='3' cellspacing='0' width='100%' border>";
+		$theContents.= "<table class='optionlistQUESTION' cellpadding='3' cellspacing='0' width='100%' border>";
 	
 		$theContents.= "<tr><td width='50%' class='option_a' onClick='" . 'submitAnswer(\"a\");' . "'>$option_a</td>";
 			$theContents.= "<td width='50%' class='option_b' onClick='" . 'submitAnswer(\"b\");' . "'>$option_b</td></tr>";
@@ -189,7 +194,7 @@
 
 		$theContents.= "<div id='answerSpace' style='hidden'>";
 
-		$theContents.= "<table class='optionlist' cellpadding='3' cellspacing='0' width='100%' border>";
+		$theContents.= "<table class='optionlistRESULTS' cellpadding='3' cellspacing='0' width='100%' border>";
 
 		$theContents.= "<tr><td width='50%' class='option_a'>$option_a<br/><span class='answer_pct'>$pct_a</span></td>";
 			$theContents.= "<td width='50%' class='option_b'>$option_b<br/><span class='answer_pct'>$pct_b</span></td></tr>";
