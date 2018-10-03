@@ -45,7 +45,7 @@
 		$sql = "DELETE FROM user_quiz_questions;";
 		// echo $sql;
 		$result = mysqli_query($conn,$sql) or die(mysqli_error($conn));
-		$sql = "UPDATE quiz_admin SET quiz_question_id = 0, quiz_question_state = 'result';";
+		$sql = "UPDATE quiz_admin SET quiz_question_id = 0, quiz_question_state = 'results';";
 		$result = mysqli_query($conn,$sql) or die(mysqli_error($conn));
 	}
 	
