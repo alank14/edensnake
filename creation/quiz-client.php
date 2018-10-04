@@ -216,11 +216,27 @@
 
 		$theContents.= "<table class='optionlistRESULTS' cellpadding='3' cellspacing='0' width='100%' border>";
 
-		$theContents.= "<tr><td width='50%' class='option_a'>$option_a<br/><span class='answer_pct'>${pct_a}%</span></td>";
-			$theContents.= "<td width='50%' class='option_b'>$option_b<br/><span class='answer_pct'>${pct_b}%</span></td></tr>";
+		$theContents.= "<tr><td width='50%' class='option_a'>$option_a<br/><span class='answer_pct'>${pct_a}%</span>";
+			if ($theAnswer == 'a') {
+				$theContents.=  "<img src='pix/checkmark.png'/>";
+			}
+			$theContents.= "</td>";
+			$theContents.= "<td width='50%' class='option_b'>$option_b<br/><span class='answer_pct'>${pct_b}%</span>";
+			if ($theAnswer == 'b') {
+				$theContents.=  "<img src='pix/checkmark.png'/>";
+			}
+			$theContents.= "</td></tr>";
 
-		$theContents.= "<tr><td width='50%' class='option_c'>$option_c<br/><span class='answer_pct'>${pct_c}%</span></td>";
-			$theContents.= "<td width='50%' class='option_d'>$option_d<br/><span class='answer_pct'>${pct_d}%</span></td></tr>";
+		$theContents.= "<tr><td width='50%' class='option_c'>$option_c<br/><span class='answer_pct'>${pct_c}%</span>";
+			if ($theAnswer == 'c') {
+				$theContents.=  "<img src='pix/checkmark.png'/>";
+			}
+			$theContents.= "</td>";
+			$theContents.= "<td width='50%' class='option_d'>$option_d<br/><span class='answer_pct'>${pct_d}%</span>";
+			if ($theAnswer == 'd') {
+				$theContents.=  "<img src='pix/checkmark.png'/>";
+			}
+			$theContents.= "</td></tr>";
 
 		$theContents.= "</table>";
 

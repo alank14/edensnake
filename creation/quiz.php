@@ -76,12 +76,9 @@
 			      //  document.getElementById("minutes").innerHTML = ("0" + minutes).slice(-2);
 			        document.getElementById("seconds").innerHTML = ("0" + seconds).slice(-2);
 			      } else {
-					$waitOver == 'TRUE';
-					<?php echo '// quiz.php?current_question=' . ($theCurrentQuestion + 1) . ';'; ?>
+					// $waitOver == 'TRUE';
+				    window.location = 'quiz.php';
 
-					// todo - refresh this page with a parameter sayinng:
-						// showResults
-						// or... showNextQuestion
 			        return;
 			      }
 			    }
@@ -96,8 +93,7 @@
 			  }());
 			  </script>
   <?php
-  // todo
-  // counnt up questionns
+  // todo: count up questions for a proper max-questions ?
   
 if (isset($_GET['debug'])) {
     $debug = 'TRUE';
@@ -115,8 +111,6 @@ if (isset($_GET['debug'])) {
 		$result = mysqli_query($conn,$sql) or die(mysqli_error($conn));
 		return TRUE; 
 	}
-
-	// todo - find the spot to refresh everyone via websockets
 	
 	function calculateScoresAndPercentages($theQuestionID) {
 		global $conn;
@@ -287,15 +281,6 @@ if (isset($_GET['debug'])) {
 			$pct_d = 0;
 		}
 	}
-	/*
-	$sql = "SELECT * FROM quiz_admin;";
-	$result = mysqli_query($conn,$sql) or die(mysqli_error($conn));
-	while($row = mysqli_fetch_array($result)){
-		$currentQuestion = $row['quiz_question_id'];
-		$currentQuestionState = $row['quiz_question_state'];
-	}
-	*/
-	// todo - is this inn the right spot?
 	
 	if ($theState == 'results') {
 
@@ -305,11 +290,27 @@ if (isset($_GET['debug'])) {
 
 		$theContents.= "<table class='optionlistRESULTS' cellpadding='3' cellspacing='0' width='100%' border>";
 
-		$theContents.= "<tr><td width='50%' class='option_a'>$option_a<br/><span class='answer_pct'>${pct_a}%</span></td>";
-			$theContents.= "<td width='50%' class='option_b'>$option_b<br/><span class='answer_pct'>${pct_b}%</span></td></tr>";
+		$theContents.= "<tr><td width='50%' class='option_a'>$option_a<br/><span class='answer_pct'>${pct_a}%</span>";
+			if ($theAnswer == 'a') {
+				$theContents.=  "<img src='pix/checkmark.png'/>";
+			}
+			$theContents.= "</td>";
+			$theContents.= "<td width='50%' class='option_b'>$option_b<br/><span class='answer_pct'>${pct_b}%</span>";
+			if ($theAnswer == 'b') {
+				$theContents.=  "<img src='pix/checkmark.png'/>";
+			}
+			$theContents.= "</td></tr>";
 
-		$theContents.= "<tr><td width='50%' class='option_c'>$option_c<br/><span class='answer_pct'>${pct_c}%</span></td>";
-			$theContents.= "<td width='50%' class='option_d'>$option_d<br/><span class='answer_pct'>${pct_d}%</span></td></tr>";
+		$theContents.= "<tr><td width='50%' class='option_c'>$option_c<br/><span class='answer_pct'>${pct_c}%</span>";
+			if ($theAnswer == 'c') {
+				$theContents.=  "<img src='pix/checkmark.png'/>";
+			}
+			$theContents.= "</td>";
+			$theContents.= "<td width='50%' class='option_d'>$option_d<br/><span class='answer_pct'>${pct_d}%</span>";
+			if ($theAnswer == 'd') {
+				$theContents.=  "<img src='pix/checkmark.png'/>";
+			}
+			$theContents.= "</td></tr>";
 
 		$theContents.= "</table>";
 
@@ -341,6 +342,8 @@ if (isset($_GET['debug'])) {
 	
 	dbClose($conn);
 
+	// todo: at this point, refresh ALL client screens, via websockets (force each client to refresh)
+	// https://davidwalsh.name/websocket
 	
   ?>
 
