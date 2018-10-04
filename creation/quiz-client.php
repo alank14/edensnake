@@ -1,4 +1,6 @@
-<html>
+<?php
+	include 'pix-header.php';
+?><html>
 <head>
   <meta charset="utf-8">
   <title>Quiz - Client</title>
@@ -46,7 +48,6 @@
 	    $debug = 'TRUE';
 	}
   
-	include 'pix-header.php';
 	include('config.php');
 	include('functions.php');
 
@@ -147,10 +148,30 @@
 		$option_c = $row['option_c'];
 		$option_d = $row['option_d'];
 		$theAnswer = $row['answer'];
-		$pct_a = $row['pct_a'];
-		$pct_b = $row['pct_b'];
-		$pct_c = $row['pct_c'];
-		$pct_d = $row['pct_d'];
+		if ($row['pct_a'] != '') {
+			$pct_a = $row['pct_a'];
+		}
+		else {
+			$pct_a = 0;
+		}
+		if ($row['pct_b'] != '') {
+			$pct_b = $row['pct_b'];
+		}
+		else {
+			$pct_b = 0;
+		}
+		if ($row['pct_c'] != '') {
+			$pct_c = $row['pct_c'];
+		}
+		else {
+			$pct_c = 0;
+		}
+		if ($row['pct_d'] != '') {
+			$pct_d = $row['pct_d'];
+		}
+		else {
+			$pct_d = 0;
+		}
 	}
 
 
@@ -195,11 +216,11 @@
 
 		$theContents.= "<table class='optionlistRESULTS' cellpadding='3' cellspacing='0' width='100%' border>";
 
-		$theContents.= "<tr><td width='50%' class='option_a'>$option_a<br/><span class='answer_pct'>$pct_a</span></td>";
-			$theContents.= "<td width='50%' class='option_b'>$option_b<br/><span class='answer_pct'>$pct_b</span></td></tr>";
+		$theContents.= "<tr><td width='50%' class='option_a'>$option_a<br/><span class='answer_pct'>${pct_a}%</span></td>";
+			$theContents.= "<td width='50%' class='option_b'>$option_b<br/><span class='answer_pct'>${pct_b}%</span></td></tr>";
 
-		$theContents.= "<tr><td width='50%' class='option_c'>$option_c<br/><span class='answer_pct'>$pct_c</span></td>";
-			$theContents.= "<td width='50%' class='option_d'>$option_d<br/><span class='answer_pct'>$pct_d</span></td></tr>";
+		$theContents.= "<tr><td width='50%' class='option_c'>$option_c<br/><span class='answer_pct'>${pct_c}%</span></td>";
+			$theContents.= "<td width='50%' class='option_d'>$option_d<br/><span class='answer_pct'>${pct_d}%</span></td></tr>";
 
 		$theContents.= "</table>";
 
@@ -223,7 +244,7 @@
 	dbClose($conn);
 
 	
-
+	// todo - make the form below be POST instead of GET
 
 	echo '<form method="get" action="./quiz-client.php" id="submitForm">' . "\n";
 	echo '<input type="hidden" name="submitted_question_number" value="' . $theQuizAdminCurrentQuestionNumber . '"/>' . "\n";

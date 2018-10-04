@@ -1,4 +1,6 @@
-<html>
+<?php
+	include 'pix-header.php';
+?><html>
 <head>
   <meta charset="utf-8">
   <title>Quiz Admin</title>
@@ -8,7 +10,6 @@
   // todo
   // count up questions
   
-	include 'pix-header.php';
 	include('config.php');
 	include('functions.php');
 
