@@ -246,7 +246,8 @@ echo '<hr/>';
 	
 	*/
 	// reset link (for debug purposes)
-	echo '<h3><a href="./riddle.php?reset=true">reset game</a></h3>';
+
+	echo '<br clear="all"/><p><a href="./riddle.php?reset=true">reset game</a></p>';
 
 ?>
 	
