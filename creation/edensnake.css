@@ -80,6 +80,7 @@ input.btag {
 
 #myHINT {
 	display: none;
+	font-size: 5vw;
 	xwidth: 150px;
     xline-height: 20px;
     border-radius: 4px;
@@ -88,12 +89,14 @@ input.btag {
 
 #clue_hints_div {
 	margin-left: 10px;
-	font-size: 8vw;
+	font-size: 3vw;
+	width: 200px;
 }
 
 #clue_answer_div {
 	margin-left: 10px;
 	font-size: 8vw;
+	width: 40%;
 }
 
 .hint_hebrew {
@@ -138,7 +141,7 @@ input.btag {
   text-align: center;
   padding: 6px;
   text-decoration: none;
-  font-size: 14px; 
+  font-size: 4vw; 
   line-height: 20px;
   border-radius: 4px;
 	font-family: 'M PLUS Rounded 1c', sans-serif;
@@ -146,7 +149,7 @@ input.btag {
 
 /* Style the logo link (notice that we set the same value of line-height and font-size to prevent the header to increase when the font gets bigger */
 .header a.logo {
-  font-size: 25px;
+  font-size: 10vw;
   font-weight: bold;
 }
 
@@ -204,7 +207,7 @@ input.btag {
   text-align: center;
   padding: 6px;
   text-decoration: none;
-  font-size: 8vw; 
+  font-size: 6vw; 
   line-height: 20px;
   border-radius: 4px;
 font-family: 'M PLUS Rounded 1c', sans-serif;
@@ -212,7 +215,7 @@ font-family: 'M PLUS Rounded 1c', sans-serif;
 
 /* Style the logo link (notice that we set the same value of line-height and font-size to prevent the header to increase when the font gets bigger */
 .cbody a.logo {
-  font-size: 25px;
+  font-size: 6vw;
   font-weight: bold;
 }
 

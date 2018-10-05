@@ -167,6 +167,8 @@ echo '	</div>';
 	-->
 
 
+<br clear="all"/>
+<br clear="all"/>
 	<input id="showHideHintButton" type="button" onclick="showHideHint()" value="Show Hint"/>
 
 
@@ -224,8 +226,8 @@ echo '	</div>';
 
 
 
-
-
+	/*
+		// debug stuff
 echo '<br clear="all"/><br/><br/>';
 
 echo '<hr/>';
@@ -237,13 +239,16 @@ echo '<hr/>';
 			echo ' (' . $riddleArray[$rday]["riddle_answer"] . ')</p>';
 			echo '</div>' . "\n";
 	}
+
+	echo '<div><input type="checkbox" id="debug-checkbox"><span>Show debug image</span></div>';
+	echo '<b>Detected QR code: </b>';
+	echo '<span id="xcam-qr-result" style="font-size:36px;">None</span>';
+	
+	*/
+	// reset link (for debug purposes)
+	echo '<h3><a href="./riddle.php?reset=true">reset game</a></h3>';
+
 ?>
-	<div>
-	    <input type="checkbox" id="debug-checkbox">
-	    <span>Show debug image</span>
-	</div>
-	<b>Detected QR code: </b>
-	<span id="xcam-qr-result" style="font-size:36px;">None</span>
 	
 	
 	<!-- Start Webcam Javascript -->
@@ -326,8 +331,6 @@ echo '<hr/>';
 	
 	
 
-	// reset link (for debug purposes)
-	echo '<h3><a href="./riddle.php?reset=true">reset game</a></h3>';
 	
 	
 	
