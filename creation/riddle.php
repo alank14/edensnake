@@ -143,12 +143,12 @@ echo '	</div>';
 			echo '<p class="instructions">Find the B-Tag that solves this riddle:</p>';
 			echo '<div id="clue_div">' . $riddleArray[$rday]["riddle"] . "</div>\n";
 	
-			echo '<p class="instructions">Scan the QR-Code, or type in the three digits:</p>';
-			echo "<div class='btag'>B-Tag Number: ";
+			echo '<p class="instructions">Scan QR-Code or type in 3 digits:</p>';
+			echo "<div class='btag'>B-Tag # ";
 				echo '<input onkeyup=' . "parseMe(document.getElementById(\"cam-qr-result\").value);" . ' id="cam-qr-result" name="ranswer" type="tel" size="4" minlength="3" maxlength="3" class="btag"/>' . "\n";
-				echo ' <div id="wordsForBTag">&nbsp;</div>';
+				echo ' <span id="wordsForBTag">&nbsp;</span>';
 			echo '</div>';
-			echo '<p class="instructions">Then click the Day of Creation at right!</p>';
+			echo '<p class="instructions">Then click the Day of Creation!</p>';
 		}
 		?>
 
