@@ -90,7 +90,7 @@ echo '	</div>';
 		// debug
 		// echo '<h3>We just took photo ' . $riddleJustAnsweredCorrectly . '.</h3>' . "\n";
 	
-		echo '<h3><a class="picLink" href="photo-index.php?creationDay=' . $riddleJustAnsweredCorrectly . '">Click here to take a photo of: somebody ' . $riddleArray[$riddleJustAnsweredCorrectly]["photo_long"]	. '</a></h3>' . "\n";		
+		echo '<div class="picDiv"><a class="picLink" href="photo-index.php?creationDay=' . $riddleJustAnsweredCorrectly . '">Click here to take a photo</a><br/><br/> of somebody ' . $riddleArray[$riddleJustAnsweredCorrectly]["photo_long"]	. '</div>' . "\n";		
 	}
 	else if ($allRiddlesAreDone == 'TRUE') {
 		// if all are correct...

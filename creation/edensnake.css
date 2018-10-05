@@ -191,6 +191,13 @@ input.btag {
 
 
 
+.picDiv a {
+  background-color: lightgreen;
+  font-size: 3vw;
+  padding: 3vw;
+  color: white;
+}
+
 
 
 
