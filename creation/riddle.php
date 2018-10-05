@@ -167,8 +167,8 @@ echo '	</div>';
 	-->
 
 
-<br clear="all"/>
-<br clear="all"/>
+<xbr clear="all"/>
+<xbr clear="all"/>
 	<input id="showHideHintButton" type="button" onclick="showHideHint()" value="Show Hint"/>
 
 
