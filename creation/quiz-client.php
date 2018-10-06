@@ -187,7 +187,8 @@
 	
 	if (($theState == 'question') && ($answerSubmissionState == "not_submitted")) {
 
-		$theContents.= "<h3>$theQuestionID) $theQuestion</h3>";
+		// $theContents.= "<h3>$theQuestionID) $theQuestion</h3>";
+		$theContents.= "<h3>&nbsp;</h3>";
 	
 		$theContents.= "<div id='answerSpace'>";
 	
@@ -210,7 +211,7 @@
 
 	else if ($theState == 'results') {
 
-		$theContents.= "<h3>$theQuestionID) $theQuestion - RESULTS</h3>";
+		$theContents.= "<h3>$theQuestionID) $theQuestion</h3>";
 
 		$theContents.= "<div id='answerSpace' style='hidden'>";
 
@@ -267,7 +268,47 @@
 	echo '<input type="hidden" id="submitted_question_answer" name="submitted_question_answer" value=""/>' . "\n";
 //	echo '<input type="submit">' . "\n";
 	echo '</form>' . "\n";
-		?>
+	?>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	
+	<script>
+		
+		url = './check-game-state.php';		
+
+		function pollQuizServer() {
+			$.getJSON(url, function(data) {
+				if ( 
+							(data.quiz_question_id == '<?php echo $theQuizAdminCurrentQuestionNumber ?>') 
+						&& (data.quiz_question_state == '<?php echo $theQuizAdminCurrentQuestionState ?>') 
+						) {
+					// alert('yes they match');
+				}
+				else {
+					// alert('NO they do not match');
+				    location.reload();
+				}
+
+	/*
+				document.write ("<h1>" + data.quiz_question_id + "</h1>");
+				document.write ("<h1>" + data.quiz_question_state + "</h1>");
+			
+				*/
+
+		//		alert(data.quiz_question_state);
+		//		echo "<h1>here is number: " + <?php echo $theQuizAdminCurrentQuestionNumber ?> + "</h1>";
+		//		echo "<h1>here is state: " + <?php echo $theQuizAdminCurrentQuestionState ?> + "</h1>";
+			});
+		}
+
+		window.setInterval(function(){
+		       /// call your function here
+			pollQuizServer();
+		}, 3000);  // Change Interval here to test. For eg: 5000 for 5 sec
+		
+		
+
+		</script>
+		
 
   
 </body>
