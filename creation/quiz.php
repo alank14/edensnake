@@ -87,7 +87,7 @@
 			  (function () { 
 			    countdown('<?php 
 				date_default_timezone_set('America/Los_Angeles');
-				$time = date("m/d/Y h:i:s a", time() + 32);
+				$time = date("m/d/Y h:i:s a", time() + 22);
 				echo $time;
 				?>');
 			  }());
