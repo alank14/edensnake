@@ -51,7 +51,7 @@
 			  (function () { 
 			    countdown('<?php 
 				date_default_timezone_set('America/Los_Angeles');
-				$time = date("m/d/Y h:i:s a", time() + 22);
+				$time = date("m/d/Y h:i:s a", time() + 17);
 				echo $time;
 				?>');
 			  }());
