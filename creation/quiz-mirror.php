@@ -46,8 +46,79 @@
 		$submitted_question_answer = '';
 	}
 	
-	echo "</head><body><h1>EdenSnake Quiz</h1>\n";
+	echo "</head><body>";
+	?>
+	
+		  <script>
+			  function countdown(endDate) {
+			    let days, hours, minutes, seconds;
+  
+			    endDate = new Date(endDate).getTime();
+  
+			    if (isNaN(endDate)) {
+			  	return;
+			    }
+  
+			    setInterval(calculate, 1000);
+  
+			    function calculate() {
+			      let startDate = new Date();
+			      startDate = startDate.getTime();
+    
+			      let timeRemaining = parseInt((endDate - startDate) / 1000);
+    
+			      if (timeRemaining >= 0) {
+			        days = parseInt(timeRemaining / 86400);
+			        timeRemaining = (timeRemaining % 86400);
+      
+			        hours = parseInt(timeRemaining / 3600);
+			        timeRemaining = (timeRemaining % 3600);
+      
+			        minutes = parseInt(timeRemaining / 60);
+			        timeRemaining = (timeRemaining % 60);
+      
+			        seconds = parseInt(timeRemaining);
+      
+			       // document.getElementById("days").innerHTML = parseInt(days, 10);
+			       // document.getElementById("hours").innerHTML = ("0" + hours).slice(-2);
+			      //  document.getElementById("minutes").innerHTML = ("0" + minutes).slice(-2);
+			        document.getElementById("seconds").innerHTML = ("0" + seconds).slice(-2);
+			      } else {
+					// $waitOver == 'TRUE';
+					
+					
+					// do not do this on mirror
+				    // window.location = 'quiz.php';
 
+			        return;
+			      }
+			    }
+			  }
+
+			  (function () { 
+			    countdown('<?php 
+				date_default_timezone_set('America/Los_Angeles');
+				$time = date("m/d/Y h:i:s a", time() + 12);
+				echo $time;
+				?>');
+			  }());
+			  </script>	
+			  
+			  
+	<table cellpadding="4"><tr>
+		<td>
+	<div class="countdown">
+	    <p class="timer">
+	        <span id="seconds">&nbsp;&nbsp;</span>
+	    </p>
+	</div>
+</td>
+<td><h1 style="font-family: arial;">Join the quiz at edensnake.com!</h1>
+</td>
+</tr></table>
+
+
+	<?php
 
 	$conn = dbOpen($sqlhost, $sqluser, $sqlpass, $sqldb);
 
@@ -122,6 +193,7 @@
 		$option_c = $row['option_c'];
 		$option_d = $row['option_d'];
 		$theAnswer = $row['answer'];
+		$thePhoto = $row['photo'];
 		if ($row['pct_a'] != '') {
 			$pct_a = $row['pct_a'];
 		}
@@ -161,8 +233,12 @@
 	
 	if (($theState == 'question') && ($answerSubmissionState == "not_submitted")) {
 
-		// $theContents.= "<div class='quizQuestion'>$theQuestionID) $theQuestion</div>";
-		$theContents.= "<div class='quizQuestion'>&nbsp;</div>";
+		$theContents.= "<div class='quizQuestion'>";
+		if ($thePhoto != '') {
+			$theContents .= "<img align='left' padding='6' src='quiz-pix/$thePhoto.jpg' width='200'/>";
+		}
+		$theContents .= "$theQuestionID) $theQuestion</div>";
+		$theContents.= "<h3>&nbsp;</h3>";
 	
 		$theContents.= "<div id='answerSpace'>";
 	
@@ -185,7 +261,11 @@
 
 	else if ($theState == 'results') {
 
-		$theContents.= "<div class='quizQuestion'>$theQuestionID) $theQuestion</div>";
+		$theContents.= "<div class='quizQuestion'>";
+		if ($thePhoto != '') {
+			$theContents .= "<img align='left' padding='6' src='quiz-pix/$thePhoto.jpg' width='200'/>";
+		}
+		$theContents .= "$theQuestionID) $theQuestion</div>";
 
 		$theContents.= "<div id='answerSpace' style='hidden'>";
 

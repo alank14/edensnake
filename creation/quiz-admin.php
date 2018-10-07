@@ -130,6 +130,8 @@
 
 	<h2><a href="./quiz-client.php">Quiz Client Screen</a></h2>
 
+	<h2><a href="./quiz-mirror.php">Quiz Mirror Screen</a></h2>
+
 	<h2><a href="./approve-photos.php">Photo Approval</a></h2>
 	
 	<h2><a href="./iview/photoz.php">Photo Viewer</a></h2> 
