@@ -5,7 +5,7 @@
 			<frame src="scoreboard.php" name="scoreboard">
 			<frame src="prizes.php" name="prizes">
 		</frameset>
-		<frame src="./quiz.php" name="quiz">
+		<frame src="./iview/photoz.php" name="photos">
 	</frameset>
 </html>
 

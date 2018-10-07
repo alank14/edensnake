@@ -134,6 +134,8 @@
 
 	<h2><a href="./quiz-mirror.php">Quiz Mirror Screen</a></h2>
 
+	<h2><a href="./questFrameset.php">Quest Frameset</a></h2>
+
 	<h2><a href="./approve-photos.php">Photo Approval</a></h2>
 	
 	<h2><a href="./iview/photoz.php">Photo Viewer</a></h2> 
