@@ -132,7 +132,7 @@
 
 	<h2><a href="./approve-photos.php">Photo Approval</a></h2>
 	
-	<h2><a href="./photo-viewer.php">Photo Viewer</a></h2>
+	<h2><a href=".iview/photoz.php">Photo Viewer</a></h2>
 	
 	<?php
 	
