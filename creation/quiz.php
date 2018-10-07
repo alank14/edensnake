@@ -270,9 +270,9 @@ if (isset($_GET['debug'])) {
 
 		$theContents .= "<div id='answerSpace' style='hidden'>";
 
-		$theContents .= "<table class='optionlistRESULTS' cellpadding='3' cellspacing='0' width='100%' border>";
+		$theContents .= "<table class='optionlistRESULTS' cellpadding='3' cellspacing='0' width='100%' height='60%' border>";
 
-		$theContents .= "<tr><td width='50%' class='option_a'>";
+		$theContents .= "<tr height='30%'><td width='50%' class='option_a'>";
 		if ($theAnswer == 'a') {
 			$theContents .=  "<img src='pix/checkmark.png'/>";
 		}
@@ -286,7 +286,7 @@ if (isset($_GET['debug'])) {
 		$theContents .= "$option_b<br/><span class='answer_pct'>${pct_b}%</span>";
 			$theContents .= "</td></tr>";
 
-		$theContents .= "<tr><td width='50%' class='option_c'>";
+		$theContents .= "<tr height='30%'><td width='50%' class='option_c'>";
 		if ($theAnswer == 'c') {
 			$theContents .=  "<img src='pix/checkmark.png'/>";
 		}
@@ -319,12 +319,12 @@ if (isset($_GET['debug'])) {
 
 			$theContents.= "$theQuestionID) $theQuestion</div>";
 
-			$theContents.=  "<br clear='all'/><table class='optionlistQUESTION' cellpadding='3' cellspacing='0' width='100%' border>\n";
+			$theContents.=  "<br clear='all'/><table class='optionlistQUESTION' cellpadding='3' cellspacing='0' width='100%' height='60%' border>\n";
 	
-			$theContents.=  "<tr><td width='50%' class='option_a'>$option_a</td>\n";
+			$theContents.=  "<tr height='30%'><td width='50%' class='option_a'>$option_a</td>\n";
 				$theContents.=  "<td width='50%' class='option_b'>$option_b</td></tr>\n";
 
-			$theContents.=  "<tr><td width='50%' class='option_c'>$option_c</td>\n";
+			$theContents.=  "<tr height='30%'><td width='50%' class='option_c'>$option_c</td>\n";
 				$theContents.=  "<td width='50%' class='option_d'>$option_d</td></tr>\n";
 
 			$theContents.=  '</table>' . "\n";
