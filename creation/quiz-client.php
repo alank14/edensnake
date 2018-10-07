@@ -166,12 +166,12 @@
 	
 		$theContents.= "<div id='answerSpace'>";
 	
-		$theContents.= "<table class='optionlistQUESTION' cellpadding='3' cellspacing='0' width='100%' border>";
+		$theContents.= "<table class='optionlistQUESTION' cellpadding='3' cellspacing='0' width='80%' border height='60%'>";
 	
-		$theContents.= "<tr><td width='50%' class='option_a' onClick='" . 'submitAnswer(\"a\");' . "'>$option_a</td>";
+		$theContents.= "<tr height='30%'><td width='50%' class='option_a' onClick='" . 'submitAnswer(\"a\");' . "'>$option_a</td>";
 			$theContents.= "<td width='50%' class='option_b' onClick='" . 'submitAnswer(\"b\");' . "'>$option_b</td></tr>";
 
-		$theContents.= "<tr><td width='50%' class='option_c' onClick='" . 'submitAnswer(\"c\");' . "'>$option_c</td>";
+		$theContents.= "<tr height='30%'><td width='50%' class='option_c' onClick='" . 'submitAnswer(\"c\");' . "'>$option_c</td>";
 			$theContents.= "<td width='50%' class='option_d' onClick='" . 'submitAnswer(\"d\");' . "'>$option_d</td></tr>";
 
 		$theContents.= "</table>";
@@ -189,22 +189,22 @@
 
 		$theContents.= "<div id='answerSpace' style='hidden'>";
 
-		$theContents.= "<table class='optionlistRESULTS' cellpadding='3' cellspacing='0' width='100%' border>";
+		$theContents.= "<table class='optionlistRESULTS' cellpadding='3' cellspacing='0' width='100%' height='60%' border>";
 
-		$theContents.= "<tr><td width='50%' class='option_a'>";
+		$theContents.= "<tr height='30%'><td width='50%' class='option_a'>";
 		if ($theAnswer == 'a') {
 			$theContents.=  "<img src='pix/checkmark.png'/>";
 		}
 		$theContents .= "$option_a<br/><span class='answer_pct'>${pct_a}%</span>";
 			$theContents.= "</td>";
-			$theContents.= "<td width='50%' class='option_b'>";
+			$theContents.= "<td width='20%' class='option_b'>";
 			if ($theAnswer == 'b') {
 				$theContents.=  "<img src='pix/checkmark.png'/>";
 			}
 		$theContents .= "$option_b<br/><span class='answer_pct'>${pct_b}%</span>";
 			$theContents.= "</td></tr>";
 
-		$theContents.= "<tr><td width='50%' class='option_c'>";
+		$theContents.= "<tr height='20%'><td width='50%' class='option_c'>";
 		if ($theAnswer == 'c') {
 			$theContents.=  "<img src='pix/checkmark.png'/>";
 		}
