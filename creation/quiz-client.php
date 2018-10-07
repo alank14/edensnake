@@ -46,7 +46,16 @@
 		$submitted_question_answer = '';
 	}
 	
-	echo "</head><body><h1>EdenSnake Quiz</h1>\n";
+	echo "</head><body>";
+//	echo "<h1>EdenSnake Quiz - <a href='riddle.php'>Visit EdenSnake Quest</a></h1>\n";
+
+	echo '	<div class="header">';
+	echo '    <img src="resources/edensnake-logo.png" alt="EdenSnake" width="80"/> <a class="active2" href="#">Quiz</a>' . "\n";
+
+	echo '	  <div class="header-right">';
+	echo '	    	<a class="active2" href="riddle.php">Visit Quest</a>';
+	echo '	  </div>';
+	echo '	</div>';
 
 
 	$conn = dbOpen($sqlhost, $sqluser, $sqlpass, $sqldb);

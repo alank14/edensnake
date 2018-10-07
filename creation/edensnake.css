@@ -163,6 +163,14 @@ input.btag {
 .header a.active {
   background-color: green;
   color: white;
+  font-size: 3vw;
+}
+
+.header a.active2 {
+  background-color: lightblue;
+  color: black;
+  font-size: 3vw;
+  padding-right: 10px;
 }
 
 /* Float the link section to the right */
@@ -214,7 +222,7 @@ input.btag {
   text-align: center;
   padding: 6px;
   text-decoration: none;
-  font-size: 6vw; 
+  font-size: 4vw; 
   line-height: 20px;
   border-radius: 4px;
 font-family: 'M PLUS Rounded 1c', sans-serif;
@@ -235,6 +243,7 @@ font-family: 'M PLUS Rounded 1c', sans-serif;
 /* Style the active/current link*/
 .cbody a.active {
   background-color: green;
+  font-size: 3vw;
   color: white;
 }
 

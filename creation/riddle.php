@@ -48,12 +48,14 @@ todo:
 	echo '</head><body>' . "\n";
 
 echo '	<div class="header">';
-echo '    <img src="resources/edensnake-logo.png" alt="EdenSnake" width="80"/>' . "\n";
+echo '    <img src="resources/edensnake-logo.png" alt="EdenSnake" width="80"/> <a class="active2" href="#">Quest</a>' . "\n";
 
 echo '	  <div class="header-right">';
 echo '	    	<span class="headerspan">';
 echo $userArray[$currentUserID]["first_name"] . " " . $userArray[$currentUserID]["last_name"];
-echo '</span> <a class="active" href="login.php">Logout</a>';
+echo '</span> ';
+echo '<a class="active2" href="quiz-client.php">Visit Quiz</a>';
+echo '<a class="active" href="login.php">Logout</a>';
 echo '	  </div>';
 echo '	</div>';
 
