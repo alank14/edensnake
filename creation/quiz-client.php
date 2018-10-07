@@ -166,7 +166,7 @@
 	
 		$theContents.= "<div id='answerSpace'>";
 	
-		$theContents.= "<table class='optionlistQUESTION' cellpadding='3' cellspacing='0' width='80%' border height='60%'>";
+		$theContents.= "<table class='optionlistQUESTION' cellpadding='3' cellspacing='0' width='100%' border height='60%'>";
 	
 		$theContents.= "<tr height='30%'><td width='50%' class='option_a' onClick='" . 'submitAnswer(\"a\");' . "'>$option_a</td>";
 			$theContents.= "<td width='50%' class='option_b' onClick='" . 'submitAnswer(\"b\");' . "'>$option_b</td></tr>";
