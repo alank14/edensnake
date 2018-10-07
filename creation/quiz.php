@@ -212,16 +212,17 @@ if (isset($_GET['debug'])) {
 	}
 
 	$thePhoto = '';
-	$sql = "SELECT quiz_questions.*, quiz_admin.quiz_question_state
-		FROM quiz_questions, quiz_admin
+	$sql = "SELECT quiz_questions.id AS the_id, quiz_questions.*, quiz_admin.quiz_question_state, quiz_categories.category
+		FROM quiz_questions, quiz_admin, quiz_categories
 		WHERE quiz_admin.quiz_question_id = quiz_questions.id
+		AND quiz_questions.category = quiz_categories.id
 	;";
 	if ($debug == 'TRUE') {
 		echo "<h3>Here is Question-asking SQL: $sql</h3>\n";
 	}
 	$result = mysqli_query($conn,$sql) or die(mysqli_error($conn));
 	while($row = mysqli_fetch_array($result)){
-		$theQuestionID = $row['id'];
+		$theQuestionID = $row['the_id'];
 		$theQuestion = $row['question'];
 		$theState = $row['quiz_question_state'];
 		$option_a = $row['option_a'];
@@ -230,6 +231,9 @@ if (isset($_GET['debug'])) {
 		$option_d = $row['option_d'];
 		$theAnswer = $row['answer'];
 		$thePhoto = $row['photo'];
+		$theDay = $row['day'];
+		$theCategory = $row['category'];
+
 		if ($row['pct_a'] != '') {
 			$pct_a = $row['pct_a'];
 		}
@@ -259,6 +263,8 @@ if (isset($_GET['debug'])) {
 	if ($theState == 'results') {
 
 		$theContents = '';
+		
+		$theContents .= "<div class='quizCategory'>Day: $theDay<br/>Category: $theCategory</div>";
 		
 		$theContents .= "<div class='quizQuestion'>";
 		
@@ -311,10 +317,12 @@ if (isset($_GET['debug'])) {
 
 			$theContents = '';
 
+			$theContents .= "<div class='quizCategory'>Day: $theDay<br/>Category: $theCategory</div>";
+		
 			$theContents.= "<div class='quizQuestion'>";
 		
 			if ($thePhoto != '') {
-				$theContents.= "<img align='left' padding='6' src='quiz-pix/$thePhoto.jpg' width='100'/>";
+				$theContents.= "<img align='left' padding='6' src='quiz-pix/$thePhoto.jpg' width='200'/>";
 			}
 
 			$theContents.= "$theQuestionID) $theQuestion</div>";
