@@ -272,6 +272,10 @@ font-family: 'M PLUS Rounded 1c', sans-serif;
 
 /* Quiz */
 
+.answer_pct {
+	font-size: 3vw;
+}
+
 .quizQuestion {
     font-size: 4vw;
     font-family: Arial;
