@@ -128,6 +128,8 @@
 	
 	<h2><a href="./quiz.php">Quiz Broadcast Screen</a></h2>
 
+	<h2><a href="./quizFrameset.php">*** Quiz Broadcast Frameset</a></h2>
+
 	<h2><a href="./quiz-client.php">Quiz Client Screen</a></h2>
 
 	<h2><a href="./quiz-mirror.php">Quiz Mirror Screen</a></h2>

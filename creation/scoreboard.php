@@ -26,6 +26,13 @@
 	$userScoreArray = array();
 	$userNameArray = array();
 
+/*
+		for ($stall=0;$stall<1000;$stall++) {
+		// stalling here
+	}
+	*/
+	sleep(3);
+
 	$sql = "SELECT 
 				user_id
 				, day_1_proposed_riddle_id

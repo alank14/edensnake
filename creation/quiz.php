@@ -42,6 +42,8 @@
 			      } else {
 					// $waitOver == 'TRUE';
 				    window.location = 'quiz.php';
+					
+					top.frames["scoreboard"].location="scoreboard.php";
 
 			        return;
 			      }
