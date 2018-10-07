@@ -12,7 +12,17 @@
 	}
 	.prize {
 		font-weight: bold;
-		margin-top: 10px;
+		margin-top: 5px;
+	}
+	.agendaul {
+		margin-top: 0px;
+		margin-bottom: 0px;
+	}
+	.agenda {
+		font-weight: bold;
+		font-size: 16px;
+		margin-top: 0px;
+		margin-left: -22px;
 	}
 	
 	</style>
@@ -21,3 +31,10 @@
 		<div class="prizehead">Great Prizes!</div>
 		<div class="prize">Top 7th Graders win Coffee Bean gift cards!</div>
 		<div class="prize">Top non-7th Graders win Forbidden Fruit Baskets!</div>
+
+		<div class="prizehead">Agenda</div>
+	<ul class="agendaul">
+			<li class="agenda">5:45pm - Mincha @Rotunda</div>
+		<li class="agenda">5:55pm - Quiz!</div>
+		<li class="agenda">6:10pm - Dinner!</div>
+		<li class="agenda">~6:45pm - Special Events!</div>
