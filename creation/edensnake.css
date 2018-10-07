@@ -267,3 +267,54 @@ font-family: 'M PLUS Rounded 1c', sans-serif;
 .currentApprovalPage {
 	background: yellow;
 }
+
+
+
+/* Quiz */
+
+.quizQuestion {
+    font-size: 4vw;
+    font-family: Arial;
+}
+
+.optionlistQUESTION td {
+  height: 100px;
+  text-align: center;
+  font-weight: bold;
+  cursor: pointer;
+}
+.optionlistRESULTS td {
+  height: 100px;
+  text-align: center;
+  font-weight: bold;
+}
+.option_a {
+  background: yellow;
+  font-size: 6vw;
+  font-family: Arial;
+}
+.option_b {
+  background: lightblue;
+  font-size: 6vw;
+  font-family: Arial;
+}
+.option_c {
+  background: pink;
+  font-size: 6vw;
+  font-family: Arial;
+}
+.option_d {
+  background: lightgreen;
+  font-size: 6vw;
+  font-family: Arial;
+}
+#seconds {
+  font-size: 48px;
+  background: lightyellow;
+  font-weight: bold;
+    margin: auto;
+    border: 3px solid #73AD21;
+  width: 200px;
+  padding: 6px;
+  color: red;
+}

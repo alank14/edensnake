@@ -4,43 +4,7 @@
 <head>
   <meta charset="utf-8">
   <title>Quiz</title>
-  <xlink rel="stylesheet" type="text/css" href="style.css">
-	  <style>
-		  .optionlistQUESTION td {
-			  height: 100px;
-			  text-align: center;
-			  font-weight: bold;
-			  cursor: pointer;
-		  }
-		  .optionlistRESULTS td {
-			  height: 100px;
-			  text-align: center;
-			  font-weight: bold;
-		  }
-		  .option_a {
-			  background: yellow;
-		  }
-		  .option_b {
-			  background: lightblue;
-		  }
-		  .option_c {
-			  background: pink;
-		  }
-		  .option_d {
-			  background: lightgreen;
-		  }
-		  #seconds {
-			  font-size: 48px;
-			  background: lightyellow;
-			  font-weight: bold;
-		      margin: auto;
-		      border: 3px solid #73AD21;
-			  width: 200px;
-			  padding: 6px;
-			  color: red;
-		  }
-		  
-		  </style>
+  <link rel="stylesheet" type="text/css" href="edensnake.css">
 		  <script>
 			  function countdown(endDate) {
 			    let days, hours, minutes, seconds;
@@ -121,6 +85,7 @@ if (isset($_GET['debug'])) {
 				, user_quiz_questions.question_id
 				, user_quiz_questions.answer_value
 				, quiz_questions.answer
+				, quiz_questions.photo
 			FROM user_quiz_questions
 				, quiz_questions
 			WHERE user_quiz_questions.question_id = $theQuestionID
@@ -179,13 +144,20 @@ if (isset($_GET['debug'])) {
 	    return TRUE; 
 	}
 	
-	echo "</head><body><h1>Quiz - Broadcast Screen</h1>\n";
+	echo "</head><body>\n";
 	?>
+	
+	<table cellpadding="4"><tr>
+		<td>
 	<div class="countdown">
 	    <p class="timer">
 	        <span id="seconds">&nbsp;&nbsp;</span>
 	    </p>
 	</div>
+</td>
+<td><h1 style="font-family: arial;">Join the quiz at edensnake.com!</h1>
+</td>
+</tr></table>
 				
 		<?php		
 		if (isset($_GET['debug'])) {
@@ -239,6 +211,7 @@ if (isset($_GET['debug'])) {
 		calculateScoresAndPercentages($theQuizAdminCurrentQuestionNumber);
 	}
 
+	$thePhoto = '';
 	$sql = "SELECT quiz_questions.*, quiz_admin.quiz_question_state
 		FROM quiz_questions, quiz_admin
 		WHERE quiz_admin.quiz_question_id = quiz_questions.id
@@ -256,6 +229,7 @@ if (isset($_GET['debug'])) {
 		$option_c = $row['option_c'];
 		$option_d = $row['option_d'];
 		$theAnswer = $row['answer'];
+		$thePhoto = $row['photo'];
 		if ($row['pct_a'] != '') {
 			$pct_a = $row['pct_a'];
 		}
@@ -284,58 +258,82 @@ if (isset($_GET['debug'])) {
 	
 	if ($theState == 'results') {
 
-		$theContents.= "<h3>$theQuestionID) $theQuestion</h3>";
+		$theContents = '';
+		
+		$theContents .= "<div class='quizQuestion'>";
+		
+		if ($thePhoto != '') {
+			$theContents .= "<img align='left' padding='6' src='quiz-pix/$thePhoto.jpg' width='100'/>";
+		}
 
-		$theContents.= "<div id='answerSpace' style='hidden'>";
+		$theContents .= "$theQuestionID) $theQuestion</div>";
 
-		$theContents.= "<table class='optionlistRESULTS' cellpadding='3' cellspacing='0' width='100%' border>";
+		$theContents .= "<div id='answerSpace' style='hidden'>";
 
-		$theContents.= "<tr><td width='50%' class='option_a'>$option_a<br/><span class='answer_pct'>${pct_a}%</span>";
-			if ($theAnswer == 'a') {
-				$theContents.=  "<img src='pix/checkmark.png'/>";
-			}
-			$theContents.= "</td>";
-			$theContents.= "<td width='50%' class='option_b'>$option_b<br/><span class='answer_pct'>${pct_b}%</span>";
-			if ($theAnswer == 'b') {
-				$theContents.=  "<img src='pix/checkmark.png'/>";
-			}
-			$theContents.= "</td></tr>";
+		$theContents .= "<table class='optionlistRESULTS' cellpadding='3' cellspacing='0' width='100%' border>";
 
-		$theContents.= "<tr><td width='50%' class='option_c'>$option_c<br/><span class='answer_pct'>${pct_c}%</span>";
-			if ($theAnswer == 'c') {
-				$theContents.=  "<img src='pix/checkmark.png'/>";
-			}
-			$theContents.= "</td>";
-			$theContents.= "<td width='50%' class='option_d'>$option_d<br/><span class='answer_pct'>${pct_d}%</span>";
-			if ($theAnswer == 'd') {
-				$theContents.=  "<img src='pix/checkmark.png'/>";
-			}
-			$theContents.= "</td></tr>";
+		$theContents .= "<tr><td width='50%' class='option_a'>";
+		if ($theAnswer == 'a') {
+			$theContents .=  "<img src='pix/checkmark.png'/>";
+		}
+		$theContents .= "$option_a<br/><span class='answer_pct'>${pct_a}%</span>";
+			$theContents .= "</td>";
+			
+			$theContents .= "<td width='50%' class='option_b'>";
+		if ($theAnswer == 'b') {
+			$theContents .=  "<img src='pix/checkmark.png'/>";
+		}
+		$theContents .= "$option_b<br/><span class='answer_pct'>${pct_b}%</span>";
+			$theContents .= "</td></tr>";
 
-		$theContents.= "</table>";
+		$theContents .= "<tr><td width='50%' class='option_c'>";
+		if ($theAnswer == 'c') {
+			$theContents .=  "<img src='pix/checkmark.png'/>";
+		}
+		$theContents .= "$option_c<br/><span class='answer_pct'>${pct_c}%</span>";
+			$theContents .= "</td>";
+			
+			$theContents .= "<td width='50%' class='option_d'>";
+		if ($theAnswer == 'd') {
+			$theContents .=  "<img src='pix/checkmark.png'/>";
+		}
+		$theContents .= "$option_d<br/><span class='answer_pct'>${pct_d}%</span>";
+			$theContents .= "</td></tr>";
 
-		$theContents.= "</div>";
+		$theContents .= "</table>";
+
+		$theContents .= "</div>";
 		
 		echo $theContents;
 	}
 	else {
 		if ($priorQuestion < $totalQuestions) {
 
-			echo "<h3>$theQuestionID) $theQuestion</h3>\n";
-	
-			echo "<table class='optionlistQUESTION' cellpadding='3' cellspacing='0' width='100%' border>\n";
-	
-			echo "<tr><td width='50%' class='option_a'>$option_a</td>\n";
-				echo "<td width='50%' class='option_b'>$option_b</td></tr>\n";
+			$theContents = '';
 
-			echo "<tr><td width='50%' class='option_c'>$option_c</td>\n";
-				echo "<td width='50%' class='option_d'>$option_d</td></tr>\n";
+			$theContents.= "<div class='quizQuestion'>";
+		
+			if ($thePhoto != '') {
+				$theContents.= "<img align='left' padding='6' src='quiz-pix/$thePhoto.jpg' width='100'/>";
+			}
 
-			echo '</table>' . "\n";
+			$theContents.= "$theQuestionID) $theQuestion</div>";
+
+			$theContents.=  "<br clear='all'/><table class='optionlistQUESTION' cellpadding='3' cellspacing='0' width='100%' border>\n";
+	
+			$theContents.=  "<tr><td width='50%' class='option_a'>$option_a</td>\n";
+				$theContents.=  "<td width='50%' class='option_b'>$option_b</td></tr>\n";
+
+			$theContents.=  "<tr><td width='50%' class='option_c'>$option_c</td>\n";
+				$theContents.=  "<td width='50%' class='option_d'>$option_d</td></tr>\n";
+
+			$theContents.=  '</table>' . "\n";
+			
+			echo $theContents;
 		
 		}
 		else {
-			echo "<h1>Game is now OVER!</h1>";
+			echo "<h1>Game Over!</h1>";
 		}
 			
 	}

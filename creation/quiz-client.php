@@ -4,33 +4,7 @@
 <head>
   <meta charset="utf-8">
   <title>Quiz - Client</title>
-  <xlink rel="stylesheet" type="text/css" href="style.css">
-	  <style>
-		  .optionlistQUESTION td {
-			  height: 100px;
-			  text-align: center;
-			  font-weight: bold;
-			  cursor: pointer;
-		  }
-		  .optionlistRESULTS td {
-			  height: 100px;
-			  text-align: center;
-			  font-weight: bold;
-		  }
-		  .option_a {
-			  background: yellow;
-		  }
-		  .option_b {
-			  background: lightblue;
-		  }
-		  .option_c {
-			  background: pink;
-		  }
-		  .option_d {
-			  background: lightgreen;
-		  }
-		  
-		  </style>
+  <link rel="stylesheet" type="text/css" href="edensnake.css">
 		  <script>
 			 function submitAnswer($theAnswer) {
 				//  alert ("hi there " + $theAnswer);
@@ -72,7 +46,7 @@
 		$submitted_question_answer = '';
 	}
 	
-	echo "</head><body><h1>Quiz - Client App</h1>\n";
+	echo "</head><body><h1>EdenSnake Quiz</h1>\n";
 
 
 	$conn = dbOpen($sqlhost, $sqluser, $sqlpass, $sqldb);
@@ -206,37 +180,41 @@
 	}
 
 	else if (($theState == 'question') && ($answerSubmissionState == "already_submitted")) {
-		$theContents.= "<h3>Results are coming soon!</h3>";
+		$theContents.= "<h3>Stand by while everyone else makes their selection!</h3>";
 	}
 
 	else if ($theState == 'results') {
 
-		$theContents.= "<h3>$theQuestionID) $theQuestion</h3>";
+		$theContents.= "<div class='quizQuestion'>$theQuestionID) $theQuestion</div>";
 
 		$theContents.= "<div id='answerSpace' style='hidden'>";
 
 		$theContents.= "<table class='optionlistRESULTS' cellpadding='3' cellspacing='0' width='100%' border>";
 
-		$theContents.= "<tr><td width='50%' class='option_a'>$option_a<br/><span class='answer_pct'>${pct_a}%</span>";
-			if ($theAnswer == 'a') {
-				$theContents.=  "<img src='pix/checkmark.png'/>";
-			}
+		$theContents.= "<tr><td width='50%' class='option_a'>";
+		if ($theAnswer == 'a') {
+			$theContents.=  "<img src='pix/checkmark.png'/>";
+		}
+		$theContents .= "$option_a<br/><span class='answer_pct'>${pct_a}%</span>";
 			$theContents.= "</td>";
-			$theContents.= "<td width='50%' class='option_b'>$option_b<br/><span class='answer_pct'>${pct_b}%</span>";
+			$theContents.= "<td width='50%' class='option_b'>";
 			if ($theAnswer == 'b') {
 				$theContents.=  "<img src='pix/checkmark.png'/>";
 			}
+		$theContents .= "$option_b<br/><span class='answer_pct'>${pct_b}%</span>";
 			$theContents.= "</td></tr>";
 
-		$theContents.= "<tr><td width='50%' class='option_c'>$option_c<br/><span class='answer_pct'>${pct_c}%</span>";
-			if ($theAnswer == 'c') {
-				$theContents.=  "<img src='pix/checkmark.png'/>";
-			}
+		$theContents.= "<tr><td width='50%' class='option_c'>";
+		if ($theAnswer == 'c') {
+			$theContents.=  "<img src='pix/checkmark.png'/>";
+		}
+		$theContents .= "$option_c<br/><span class='answer_pct'>${pct_c}%</span>";
 			$theContents.= "</td>";
-			$theContents.= "<td width='50%' class='option_d'>$option_d<br/><span class='answer_pct'>${pct_d}%</span>";
+			$theContents.= "<td width='50%' class='option_d'>";
 			if ($theAnswer == 'd') {
 				$theContents.=  "<img src='pix/checkmark.png'/>";
 			}
+		$theContents .= "$option_d<br/><span class='answer_pct'>${pct_d}%</span>";
 			$theContents.= "</td></tr>";
 
 		$theContents.= "</table>";
@@ -247,7 +225,9 @@
 	else if ($theState == 'pause') {
 		$theContents.= "<h3>Quiz is in PAUSE mode!</h3>";
 	}
-	$theContents.= "<h3><a href='./quiz-client.php'>Click to refresh this page, cleanly.</a></h3>";
+	if ($debug == 'TRUE') {
+		$theContents.= "<h3><a href='./quiz-client.php'>Click to refresh this page, cleanly.</a></h3>";
+	}
 
 	echo "<div id='question_or_results'>\n";
 	
