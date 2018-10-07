@@ -134,7 +134,10 @@ echo '	</div>';
 			    echo '}' . "\n";
 			echo '}' . "\n";
 		
-		
+			echo 'function setCameraFlip() {' . "\n";
+				echo 'alert("Correct! Now select the day!");';
+				echo 'document.getElementById("hiddenDiv").innerHTML = "<input type=\'hidden\' name=\'ranswer\' value=\'512\'>";';
+				echo '}' . "\n";
 		
 		echo "</script>\n";
 	
@@ -143,14 +146,20 @@ echo '	</div>';
 			echo '<p class="instructions">Find the B-Tag that solves this riddle:</p>';
 			echo '<div id="clue_div">' . $riddleArray[$rday]["riddle"] . "</div>\n";
 	
-			echo '<p class="instructions">Scan QR-Code or type in 3 digits:</p>';
-			echo "<div class='btag'>B-Tag # ";
-				echo '<input onkeyup=' . "parseMe(document.getElementById(\"cam-qr-result\").value);" . ' id="cam-qr-result" name="ranswer" type="tel" size="4" minlength="3" maxlength="3" class="btag"/>' . "\n";
-				echo ' <span id="wordsForBTag">&nbsp;</span>';
-			echo '</div>';
-			echo '<p class="instructions">Then click the Day of Creation!</p>';
+			if ($rday == '6') {
+				echo '<img src="img/flip-camera.png" width="200" onClick="setCameraFlip();"/>';
+			}
+			else {
+				echo '<p class="instructions">Scan QR-Code or type in 3 digits:</p>';
+				echo "<div class='btag'>B-Tag # ";
+					echo '<input onkeyup=' . "parseMe(document.getElementById(\"cam-qr-result\").value);" . ' id="cam-qr-result" name="ranswer" type="tel" size="4" minlength="3" maxlength="3" class="btag"/>' . "\n";
+					echo ' <span id="wordsForBTag">&nbsp;</span>';
+				echo '</div>';
+				echo '<p class="instructions">Then click the Day of Creation!</p>';
+			}
 		}
 		?>
+<div id="hiddenDiv"></div>
 
 		<!-- webcam -->
 		<div class="cam">
@@ -247,7 +256,7 @@ echo '<hr/>';
 	*/
 	// reset link (for debug purposes)
 
-	echo '<br clear="all"/><p><a href="./riddle.php?reset=true">reset game</a></p>';
+//	echo '<br clear="all"/><p><a href="./riddle.php?reset=true">reset game</a></p>';
 
 ?>
 	
