@@ -30,11 +30,9 @@
 	<body>
 		<div class="prizehead">Great Prizes!</div>
 		<div class="prize">Top 7th Graders win Coffee Bean gift cards!</div>
-		<div class="prize">Top non-7th Graders win Forbidden Fruit Baskets!</div>
+		<div class="prize">Top non-7th Grader wins Forbidden Fruit Basket!</div>
 
 		<div class="prizehead">Schedule</div>
 	<ul class="agendaul">
 			<li class="agenda">5:45pm - Mincha @Rotunda</div>
 		<li class="agenda">5:55pm - Quiz!</div>
-		<li class="agenda">6:10pm - Dinner!</div>
-		<li class="agenda">~6:45pm - Special Events!</div>
