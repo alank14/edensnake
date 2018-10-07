@@ -53,6 +53,7 @@
 
 	echo '<body>' . "\n";
 
+	echo '<h1>Welcome to EdenSnake!</h1>';
 	echo '	<div class="header">';
 	echo '    <img src="resources/edensnake-logo.png" alt="EdenSnake" width="80"/>' . "\n";
 	echo '	</div>';
