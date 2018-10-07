@@ -38,15 +38,25 @@
 
 	$sql = "SELECT 
 				users.id
-				, user_quiz_questions.answer_score
 				, users.first_name
 				, users.last_name
 			FROM 
+				users
+				;";
+	
+	$result = mysqli_query($conn,$sql) or die(mysqli_error($conn));
+
+	while($row = mysqli_fetch_array($result)){
+		$userNameArray[$row['id']] = $row['first_name'] . ' ' . $row['last_name'];
+	}
+
+	$sql = "SELECT 
+				user_quiz_questions.user_id
+				, user_quiz_questions.answer_score
+			FROM 
 				user_quiz_questions
-				, users
 			WHERE
-				user_quiz_questions.user_id = users.id
-				AND user_quiz_questions.answer_score IS NOT NULL
+				user_quiz_questions.answer_score IS NOT NULL
 			ORDER BY
 				user_quiz_questions.user_id asc
 				;";
@@ -56,8 +66,7 @@
 	$result = mysqli_query($conn,$sql) or die(mysqli_error($conn));
 
 	while($row = mysqli_fetch_array($result)){
-		$userScoreArray[$row['id']] += $row['answer_score'];
-		$userNameArray[$row['id']] = $row['first_name'] . ' ' . $row['last_name'];
+		$userScoreArray[$row['user_id']] += $row['answer_score'];
 	}
 	arsort($userScoreArray);
 	
