@@ -9,67 +9,6 @@
 
 	$conn = dbOpen($sqlhost, $sqluser, $sqlpass, $sqldb);
 
-	$userScoreArray = array();
-	$userNameArray = array();
-
-	$sql = "SELECT 
-				user_id
-				, day_1_proposed_riddle_id
-				, day_2_proposed_riddle_id
-				, day_3_proposed_riddle_id
-				, day_4_proposed_riddle_id
-				, day_5_proposed_riddle_id
-				, day_6_proposed_riddle_id
-				, day_7_proposed_riddle_id
-			FROM 
-				user_riddles
-				;";
-	
-	
-	$result = mysqli_query($conn,$sql) or die(mysqli_error($conn));
-
-	while($row = mysqli_fetch_array($result)){
-		for ($i=1; $i<8; $i++) {
-			if ($row['day_' . $i . '_proposed_riddle_id'] != '') {
-				$userScoreArray[$row['user_id']] += 10;
-			}
-		}
-	}
-
-	$sql = "SELECT 
-				users.id
-				, users.first_name
-				, users.last_name
-			FROM 
-				users
-				;";
-	
-	$result = mysqli_query($conn,$sql) or die(mysqli_error($conn));
-
-	while($row = mysqli_fetch_array($result)){
-		$userNameArray[$row['id']] = $row['first_name'] . ' ' . $row['last_name'];
-	}
-
-	$sql = "SELECT 
-				user_quiz_questions.user_id
-				, user_quiz_questions.answer_score
-			FROM 
-				user_quiz_questions
-			WHERE
-				user_quiz_questions.answer_score IS NOT NULL
-			ORDER BY
-				user_quiz_questions.user_id asc
-				;";
-	
-				// echo "<pre>$sql</pre>\n";
-				
-	$result = mysqli_query($conn,$sql) or die(mysqli_error($conn));
-
-	while($row = mysqli_fetch_array($result)){
-		$userScoreArray[$row['user_id']] += $row['answer_score'];
-	}
-	arsort($userScoreArray);
-	
 	$sql = "SELECT 
 				photos.day
 				, photos.filename
@@ -127,18 +66,6 @@
 
 	<body>
 <div id="cont">
-	<div id="scoreboard">
-	<h1>Scoreboard</h1>
-	<table cellpadding="8" width="100%">
-		<?php
-			
-		foreach ($userScoreArray AS $user => $score) {
-			echo "<tr><td>" . $userNameArray[$user] . "</td><td align='right'>" . $score . "</td></tr>\n";
-		}
-			
-		?>
-	</table>
-	</div>
 	
 	<div class="container">
 			<div id="centerTitle">
