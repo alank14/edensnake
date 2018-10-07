@@ -263,7 +263,7 @@ if (isset($_GET['debug'])) {
 		$theContents .= "<div class='quizQuestion'>";
 		
 		if ($thePhoto != '') {
-			$theContents .= "<img align='left' padding='6' src='quiz-pix/$thePhoto.jpg' width='100'/>";
+			$theContents .= "<img align='left' padding='6' src='quiz-pix/$thePhoto.jpg' width='200'/>";
 		}
 
 		$theContents .= "$theQuestionID) $theQuestion</div>";
